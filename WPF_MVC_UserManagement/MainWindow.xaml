@@ -1,0 +1,75 @@
+﻿<Window x:Class="WPF_MVC_UserManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_MVC_UserManagement" 
+        xmlns:view="clr-namespace:WPF_MVC_UserManagement.View"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource MainBackgroundBrush}"
+        Title="MainWindow" Height="1080" Width="1920">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="830"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- WindowTitleBarView -->
+        <view:WindowTitleBarView Grid.Row="0" Grid.ColumnSpan="2"/>
+
+        <!-- TitleNameView -->
+        <view:TitleNameView Grid.Row="1" Grid.Column="0"/>
+
+        <!-- SystemTimeView -->
+        <view:SystemTimeView Grid.Row="1" Grid.Column="1"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <TabControl TabStripPlacement="Left" Background="{StaticResource ContentBackgroundBrush}" BorderBrush="{x:Null}">
+                <TabItem Header="Config File" Style="{DynamicResource TabItemConfigFileStyle}" FontFamily="/Fonts/#Roboto" Margin="0,75,0,-75">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="165"/>
+                        </Grid.RowDefinitions>
+
+                        <view:UserManageTreeView Grid.Column="0" Grid.RowSpan="2"/>
+                        <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource MainBackgroundBrush}" Margin="0, -2"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="System Config" Style="{DynamicResource TabItemSystemConfigStyle}" FontFamily="/Fonts/#Roboto" Margin="0,75,0,-75">
+
+                </TabItem>
+                <TabItem Header="User Manage" Style="{DynamicResource TabItemUserManageStyle}" FontFamily="/Fonts/#Roboto"  Margin="0,75,0,-75">
+                    <!--<Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="165"/>
+                        </Grid.RowDefinitions>
+
+                        <view:UserManageTreeView Grid.Column="0" Grid.RowSpan="2"/>
+                        <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource MainBackgroundBrush}" Margin="0, -2"/>
+                    </Grid>-->
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

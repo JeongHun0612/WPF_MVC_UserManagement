@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="WPF_MVC_UserManagement.View.SystemTimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVC_UserManagement.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="830">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="KST" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+            <Label Grid.Column="1" x:Name="KSTDateTime" Content="2021.09.02. 10:31:29" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+        </Grid>
+        <Rectangle Grid.Column="1" Width="1.5" Height="20" Fill="{StaticResource ShapesFillBrush}" Opacity="0.5"/>
+
+        <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="55"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="UTC" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+            <Label Grid.Column="1" x:Name="UTCDateTime" Content="2021.09.02 10:31:29" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+        </Grid>
+        <Rectangle Grid.Column="3" Width="1.5" Height="20" Fill="{StaticResource ShapesFillBrush}" Opacity="0.5"/>
+        
+        <Grid Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="GPS Week" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+            <Label Grid.Column="1" x:Name="GPSWeekTime" Content="001" Foreground="{StaticResource LabelForegroundBrush2}" FontFamily="/Fonts/#Roboto" FontSize="20"/>
+        </Grid>
+    </Grid>
+</UserControl>

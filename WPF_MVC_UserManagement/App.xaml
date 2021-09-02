@@ -1,0 +1,19 @@
+﻿<Application x:Class="WPF_MVC_UserManagement.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF_MVC_UserManagement"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- UI Brush Color -->
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Color/UIBrush.xaml"/>
+
+                <!-- UI Style -->
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TabControlStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TreeViewStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

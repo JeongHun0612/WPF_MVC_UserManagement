@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="UIColor.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!-- BackGround Brush -->
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource Color_000}"/>
+    <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource Color_001}"/>
+
+    <!-- Button Brush -->
+    <SolidColorBrush x:Key="SystemButtonHoverBackgroudBrush" Color="{StaticResource Color_004}"/>
+    <SolidColorBrush x:Key="SystemButtonPressedBackgroudBrush" Color="{StaticResource Color_005}"/>
+    <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_006}"/>
+    <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_007}"/>
+
+    <!-- Shapes Brush -->
+    <SolidColorBrush x:Key="ShapesStrokeBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ShapesFillBrush" Color="{StaticResource Color_002}"/>
+
+    <!-- Label Brush -->
+    <SolidColorBrush x:Key="LabelForegroundBrush1" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="LabelForegroundBrush2" Color="{StaticResource Color_002}"/>
+
+    <!-- TabItem Brush -->
+    <SolidColorBrush x:Key="TabItemInnerBackgroundBrush" Color="{StaticResource Color_001}"/>
+    <SolidColorBrush x:Key="TabItemInnerForegroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="TabItemShpaeFillBrush" Color="{StaticResource Color_003}"/>
+
+    <!-- TreeView Brush -->
+    <SolidColorBrush x:Key="TreeViewToggleButtonBackgroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="TreeViewForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="TreeViewRectAngleBrush" Color="{StaticResource Color_003}"/>
+
+
+</ResourceDictionary>

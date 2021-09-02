@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Base Color -->
+    <Color x:Key="Color_000">#FF141C1E</Color>
+    <Color x:Key="Color_001">#FF212A30</Color>
+
+    <!-- Main Color -->
+    <Color x:Key="Color_002">#FFF1F1F1</Color>
+    <Color x:Key="Color_003">#FF0CC486</Color>
+    <!-- Style Color -->
+    <Color x:Key="Color_004">DarkGray</Color>
+    <Color x:Key="Color_005">Gray</Color>
+    <Color x:Key="Color_006">Red</Color>
+    <Color x:Key="Color_007">IndianRed</Color>
+    
+</ResourceDictionary>
