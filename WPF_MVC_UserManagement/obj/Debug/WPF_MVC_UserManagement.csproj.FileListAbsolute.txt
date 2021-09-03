@@ -42,3 +42,8 @@ C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\De
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\UserManageTreeView.g.cs
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\UserManageTreeView.baml
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\TreeViewStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\ScrollBarStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\ContextMenuStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\TextBoxStyle.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\WarningMessageBoxView.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\WarningMessageBoxView.baml

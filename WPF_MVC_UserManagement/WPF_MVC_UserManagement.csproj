@@ -61,8 +61,10 @@
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
     <Compile Include="Controller\UserManageTreeController.cs" />
+    <Compile Include="Library\FocusExtension.cs" />
     <Compile Include="Model\UserManageTreeModel.cs" />
     <Compile Include="MySQLManager.cs" />
+    <Compile Include="Notifier.cs" />
     <Compile Include="View\SystemTimeView.xaml.cs">
       <DependentUpon>SystemTimeView.xaml</DependentUpon>
     </Compile>
@@ -71,6 +73,9 @@
     </Compile>
     <Compile Include="View\UserManageTreeView.xaml.cs">
       <DependentUpon>UserManageTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WarningMessageBoxView.xaml.cs">
+      <DependentUpon>WarningMessageBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WindowTitleBarView.xaml.cs">
       <DependentUpon>WindowTitleBarView.xaml</DependentUpon>
@@ -99,9 +104,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Style\ContextMenuStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\ScrollBarStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Style\TabControlStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\TreeViewStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserManageTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WarningMessageBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,7 +191,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\dangerIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\configFileIconNormal.png" />
     <Resource Include="Image\configFileIconSelect.png" />
@@ -180,7 +203,7 @@
     <Resource Include="Image\userManageIconSelect.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\화살표.png" />
+    <Resource Include="Image\warningIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

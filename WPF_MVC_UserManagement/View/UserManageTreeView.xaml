@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WPF_MVC_UserManagement.View"
+             xmlns:local="clr-namespace:WPF_MVC_UserManagement"
              xmlns:model="clr-namespace:WPF_MVC_UserManagement.Model"
              mc:Ignorable="d"
-             Loaded="UserManageTreeViewLoaded"
              d:DesignHeight="795" d:DesignWidth="350">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -16,10 +15,33 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="User List" VerticalContentAlignment="Center" FontSize="24" FontFamily="/Fonts/#Roboto Bold" Foreground="{StaticResource LabelForegroundBrush2}" Margin="15,0,0,0"/>
         <Grid Grid.Row="1">
-            <TreeView x:Name="UserTreeView" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
+            <TreeView x:Name="userTreeView" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:UserManageTreeModel}" ItemsSource="{Binding ChildGroupList}">
-                         <TextBlock Text="{Binding Header}"/>
+                        <Grid>
+                            <TextBlock Text="{Binding Header}">
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                        <MenuItem Header="루트 추가" Click="RootAddClick"/>
+                                        <MenuItem Header="추가" Click="ChildAddClick"/>
+                                        <MenuItem Header="삭제" Click="DeleteClick"/>
+                                        <MenuItem Header="이름 바꾸기"/>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}"> 
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="{StaticResource TreeViewSelectForegroundBrush}"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBox x:Name="treeviewTextBox" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
+                                     KeyDown="TreeEditSave">
+                            </TextBox>
+                        </Grid>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>

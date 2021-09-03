@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- systemButtonStyle -->
-    <Style x:Key="systemButtonStyle" TargetType="{x:Type Button}">
+    <!-- SystemButtonStyle -->
+    <Style x:Key="SystemButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="45"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -25,8 +25,8 @@
         </Setter>
     </Style>
 
-    <!-- systemButtonExitStyle -->
-    <Style x:Key="systemButtonExitStyle" TargetType="{x:Type Button}">
+    <!-- SystemButtonExitStyle -->
+    <Style x:Key="SystemButtonExitStyle" TargetType="{x:Type Button}">
         <Setter Property="Width" Value="45"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -48,4 +48,40 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- MessageBoxButtonStyle -->
+    <Style x:Key="MessageBoxButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource WarningMessageBoxButtonBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource WarningMessageBoxForegroundBrush}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <TextBlock Name ="textblock" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource WarningMessageBoxButtonHoverBackgroundBrush}"/>
+                            <Setter Property="Foreground" TargetName="textblock" Value="{StaticResource WarningMessageBoxButtonHoverForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="Transparent"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource WarningMessageBoxButtonPressedBackgroundBrush}"/>
+                            <Setter Property="Foreground" TargetName="textblock" Value="{StaticResource WarningMessageBoxButtonHoverForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WPF_MVC_UserManagement.Model;
 
 namespace WPF_MVC_UserManagement.View
@@ -16,42 +18,46 @@ namespace WPF_MVC_UserManagement.View
             InitializeComponent();
 
             ControllerInit();
+            UserGroupListInit();
         }
 
         private void ControllerInit()
         {
             MainWindow.userManageTreeController.delegateUserGroupTree += SendUserGroupTree;
-
         }
 
-        //private void PopulateParentGroupTree()
-        //{
-        //    int index = 0;
-        //    string parentGroupSelectQuery = string.Format("SELECT * FROM {0}", tableName[0]);
-        //    DataSet parentGroupDataSet = MainWindowViewModel.manager.Select(parentGroupSelectQuery, tableName[0]);
-
-        //    foreach (DataRow item in parentGroupDataSet.Tables[0].Rows)
-        //    {
-        //        string parentGroupHeader = item["parent_group_name"].ToString();
-        //        string parentGroupPrimaryKey = item["parent_group_id"].ToString();
-        //        UserManageTreeModel parentGroupNode = new UserManageTreeModel(index, 0, parentGroupPrimaryKey, string.Empty, parentGroupHeader, false, false);
-
-        //        ParentGroupList.Add(parentGroupNode);
-        //        UserGroupList.Add(new ComboBoxGroupListModel(parentGroupHeader, true, parentGroupPrimaryKey));
-        //        PopulateUserGroupTree(parentGroupNode, parentGroupPrimaryKey);
-        //        index++;
-        //    }
-        //}
-
-
-        private void SendUserGroupTree(ObservableCollection<UserManageTreeModel> data)
-        {
-            UserTreeView.ItemsSource = data;
-        }
-
-        private void UserManageTreeViewLoaded(object sender, System.Windows.RoutedEventArgs e)
+        private void UserGroupListInit()
         {
             MainWindow.userManageTreeController.CallUserGroupTree();
+        }
+
+        private void SendUserGroupTree(ObservableCollection<UserManageTreeModel> userGroupTreeData)
+        {
+            userTreeView.ItemsSource = userGroupTreeData;
+        }
+
+        private void RootAddClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow.userManageTreeController.CallRootAddClick();
+        }
+
+        private void ChildAddClick(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("ChildAdd Click");
+        }
+
+        private void DeleteClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow.userManageTreeController.CallDeleteClick();
+        }
+
+        private void TreeEditSave(object sender, KeyEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (e.Key == Key.Return)
+            {
+                MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text);
+            }
         }
     }
 }

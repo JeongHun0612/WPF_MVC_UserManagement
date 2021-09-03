@@ -15,14 +15,14 @@
         <Grid Grid.Column="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <!-- MinimizeButton --> 
-                <Button Style="{DynamicResource systemButtonStyle}" Click="MinimizeClick">
+                <Button Style="{DynamicResource SystemButtonStyle}" Click="MinimizeClick">
                     <Button.Content>
                         <Rectangle Width="12" Height="1" Fill="{StaticResource ShapesFillBrush}"/>
                     </Button.Content>
                 </Button>
 
                 <!-- MaximizeButton -->
-                <Button Style="{DynamicResource systemButtonStyle}" Click="MaximizeClick">
+                <Button Style="{DynamicResource SystemButtonStyle}" Click="MaximizeClick">
                     <Button.Content>
                         <Grid>
                             <Rectangle x:Name="minRectAngle" Width="10" Height="10" Stroke="{StaticResource ShapesStrokeBrush}" Visibility="Visible"/>
@@ -35,7 +35,7 @@
                 </Button>
 
                 <!-- ExitButton -->
-                <Button Style="{DynamicResource systemButtonExitStyle}" Click="ExitClick">
+                <Button Style="{DynamicResource SystemButtonExitStyle}" Click="ExitClick">
                     <Button.Content>
                         <Canvas>
                             <Line X1="-5" Y1="-5" X2="5" Y2="5" Stroke="{StaticResource ShapesStrokeBrush}"/>

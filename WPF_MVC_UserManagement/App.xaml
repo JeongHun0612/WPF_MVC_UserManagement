@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TabControlStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TreeViewStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ContextMenuStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -10,8 +10,8 @@ namespace WPF_MVC_UserManagement
     {
         public MainWindow()
         {
-            InitializeComponent();
             DBManger.Initialize();
+            InitializeComponent();
         }
 
         public static MySQLManager DBManger = new MySQLManager();

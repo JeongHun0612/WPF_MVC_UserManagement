@@ -4,7 +4,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="UIColor.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <!-- BackGround Brush -->
     <SolidColorBrush x:Key="MainBackgroundBrush" Color="{StaticResource Color_000}"/>
     <SolidColorBrush x:Key="ContentBackgroundBrush" Color="{StaticResource Color_001}"/>
@@ -14,6 +14,11 @@
     <SolidColorBrush x:Key="SystemButtonPressedBackgroudBrush" Color="{StaticResource Color_005}"/>
     <SolidColorBrush x:Key="ExitButtonHoverBackgroudBrush" Color="{StaticResource Color_006}"/>
     <SolidColorBrush x:Key="ExitButtonPressedBackgroudBrush" Color="{StaticResource Color_007}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxButtonBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxButtonForegroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxButtonHoverBackgroundBrush" Color="{StaticResource Color_010}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxButtonPressedBackgroundBrush" Color="{StaticResource Color_011}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxButtonHoverForegroundBrush" Color="{StaticResource Color_002}"/>
 
     <!-- Shapes Brush -->
     <SolidColorBrush x:Key="ShapesStrokeBrush" Color="{StaticResource Color_002}"/>
@@ -31,7 +36,20 @@
     <!-- TreeView Brush -->
     <SolidColorBrush x:Key="TreeViewToggleButtonBackgroundBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="TreeViewForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="TreeViewCaretBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="TreeViewSelectForegroundBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="TreeViewRectAngleBrush" Color="{StaticResource Color_003}"/>
+    
+    <!-- ContextMenu Brush -->
+    <SolidColorBrush x:Key="ContextMenuBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ContextMenuForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ContextMenuSelectForegroundBrush" Color="{StaticResource Color_003}"/>
+
+
+    <!-- WarningMessageBoxView Brush -->
+    <SolidColorBrush x:Key="WarningMessageBoxBackgroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxBorderBrush" Color="{StaticResource Color_009}"/>
+    <SolidColorBrush x:Key="WarningMessageBoxForegroundBrush" Color="{StaticResource Color_003}"/>
 
 
 </ResourceDictionary>

@@ -4,14 +4,20 @@
     <!-- Base Color -->
     <Color x:Key="Color_000">#FF141C1E</Color>
     <Color x:Key="Color_001">#FF212A30</Color>
+    <Color x:Key="Color_009">#FF5F5F5F</Color>
 
     <!-- Main Color -->
     <Color x:Key="Color_002">#FFF1F1F1</Color>
     <Color x:Key="Color_003">#FF0CC486</Color>
+
+
     <!-- Style Color -->
     <Color x:Key="Color_004">DarkGray</Color>
     <Color x:Key="Color_005">Gray</Color>
     <Color x:Key="Color_006">Red</Color>
     <Color x:Key="Color_007">IndianRed</Color>
-    
+    <Color x:Key="Color_008">#FF1F2428</Color>
+    <Color x:Key="Color_010">#FF17B28D</Color>
+    <Color x:Key="Color_011">#FF0AA681</Color>
+
 </ResourceDictionary>
