@@ -15,7 +15,7 @@ namespace WPF_MVC_UserManagement.View
             DateTimerInit();
         }
 
-        private DispatcherTimer Timer = new DispatcherTimer();
+        public static DispatcherTimer Timer = new DispatcherTimer();
 
         private void DateTimerInit()
         {

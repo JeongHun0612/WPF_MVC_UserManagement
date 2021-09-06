@@ -93,16 +93,18 @@ namespace WPF_MVC_UserManagement
         // Query Executer Select
         public DataSet Select(string query, string tableName)
         {
+            MySqlCommand command = CreateCommand(query);
             DataSet dataSet = new DataSet();
 
             try
             {
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, connection);
+                dataAdapter.SelectCommand = command;
                 dataAdapter.Fill(dataSet, tableName);
-                if (dataSet.Tables.Count <= 0)
-                {
-                    return null;
-                }
+                //if (dataSet.Tables.Count <= 0)
+                //{
+                //    dataSet = null;
+                //}
             }
             catch (MySqlException e)
             {

@@ -45,7 +45,12 @@ namespace WPF_MVC_UserManagement.View
 
         private void ChildAddClick(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("ChildAdd Click");
+            //TreeViewItem item = (TreeViewItem)(userTreeView.ItemContainerGenerator.ContainerFromIndex(userTreeView.Items.CurrentItem));
+            //item.IsExpanded = true;
+            //Debug.WriteLine(item.Header);
+
+            //UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            //MainWindow.userManageTreeController.CallChildAddClick(selectedItem);
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
@@ -54,18 +59,34 @@ namespace WPF_MVC_UserManagement.View
             MainWindow.userManageTreeController.CallDeleteClick(selectedItem);
         }
 
+        private void RenameClick(object sender, RoutedEventArgs e)
+        {
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            MainWindow.userManageTreeController.CallRenameClick(selectedItem);
+        }
+
         private void TreeEditKeyDown(object sender, KeyEventArgs e)
         {
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
             TextBox textBox = sender as TextBox;
+
             if (e.Key == Key.Return)
             {
-                MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text);
+                MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text, selectedItem);
             }
 
             if (e.Key == Key.Escape)
             {
                 MainWindow.userManageTreeController.CallTreeEditCancle();
             }
+        }
+
+        private void TreeEditLostFocus(object sender, RoutedEventArgs e)
+        {
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            TextBox textBox = sender as TextBox;
+
+            MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text, selectedItem);
         }
 
         private void TextBlock_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -98,6 +119,15 @@ namespace WPF_MVC_UserManagement.View
             }
 
             return returnVal as T;
+        }
+
+        private void userTreeView_Selected(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("selected");
+            TreeViewItem tvi = e.OriginalSource as TreeViewItem;
+            tvi.IsExpanded = true;
+
+            Debug.WriteLine(tvi.Header);
         }
     }
 }

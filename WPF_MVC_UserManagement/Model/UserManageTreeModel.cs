@@ -5,15 +5,12 @@ namespace WPF_MVC_UserManagement.Model
 {
     public class UserManageTreeModel : NotifierCollection
     {
-        public UserManageTreeModel()
-        {
-        }
-
         public UserManageTreeModel(int depthCount, string primaryKey, string header)
         {
             this.depthCount = depthCount;
             this.primaryKey = primaryKey;
             this.header = header;
+            this.isHeader = Visibility.Visible;
             this.isEdit = Visibility.Collapsed;
         }
 
@@ -24,6 +21,7 @@ namespace WPF_MVC_UserManagement.Model
             this.header = header;
             this.isEdit = isEdit;
             this.isEditFocus = true;
+            this.isHeader = Visibility.Collapsed;
         }
 
         private int depthCount;
@@ -45,6 +43,27 @@ namespace WPF_MVC_UserManagement.Model
         {
             get { return this.header; }
             set { this.header = value; NotifyCollection("Header"); }
+        }
+
+        private string inputHeader;
+        public string InputHeader
+        {
+            get { return this.inputHeader; }
+            set { this.inputHeader = value; NotifyCollection("InputHeader"); }
+        }
+
+        private string parentPrimaryKey;
+        public string ParentPrimaryKey
+        {
+            get { return this.parentPrimaryKey; }
+            set { this.parentPrimaryKey = value; NotifyCollection("ParentPrimaryKey"); }
+        }
+
+        private Visibility isHeader;
+        public Visibility IsHeader
+        {
+            get { return this.isHeader; }
+            set { this.isHeader = value; NotifyCollection("IsHeader"); }
         }
 
         private Visibility isEdit;
@@ -73,40 +92,6 @@ namespace WPF_MVC_UserManagement.Model
                 return this.childGroupList;
             }
             set { this.childGroupList = value; }
-        }
-
-        public class ParentUserGroup : NotifierCollection
-        {
-            public ParentUserGroup(string name)
-            {
-                this.Name = name;
-                this.Children = new ObservableCollection<UserGroup>();
-            }
-
-            public string Name { get; set; }
-            public ObservableCollection<UserGroup> Children { get; set; }
-        }
-
-        public class UserGroup : NotifierCollection
-        {
-            public UserGroup(string name)
-            {
-                this.Name = name;
-                this.Children = new ObservableCollection<User>();
-            }
-
-            public string Name { get; set; }
-            public ObservableCollection<User> Children { get; set; }
-        }
-
-        public class User : NotifierCollection
-        {
-            public User(string name)
-            {
-                this.Name = name;
-            }
-
-            public string Name { get; set; }
         }
     }
 }

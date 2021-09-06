@@ -15,17 +15,17 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="User List" VerticalContentAlignment="Center" FontSize="24" FontFamily="/Fonts/#Roboto Bold" Foreground="{StaticResource LabelForegroundBrush2}" Margin="15,0,0,0"/>
         <Grid Grid.Row="1">
-            <TreeView x:Name="userTreeView" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
+            <TreeView x:Name="userTreeView" TreeViewItem.Selected="userTreeView_Selected" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:UserManageTreeModel}" ItemsSource="{Binding ChildGroupList}">
                         <Grid>
-                            <TextBlock Text="{Binding Header}" MouseRightButtonDown="TextBlock_MouseRightButtonDown">
+                            <TextBlock Text="{Binding Header}" Visibility="{Binding IsHeader}" MouseRightButtonDown="TextBlock_MouseRightButtonDown">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Header="루트 추가" Click="RootAddClick"/>
                                         <MenuItem Header="추가" Click="ChildAddClick"/>
                                         <MenuItem Header="삭제" Click="DeleteClick"/>
-                                        <MenuItem Header="이름 바꾸기"/>
+                                        <MenuItem Header="이름 바꾸기" Click="RenameClick"/>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                                 <TextBlock.Style>
@@ -38,8 +38,8 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBox x:Name="treeviewTextBox" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
-                                     KeyDown="TreeEditKeyDown">
+                            <TextBox x:Name="treeviewTextBox" Text="{Binding InputHeader}" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
+                                     KeyDown="TreeEditKeyDown" LostFocus="TreeEditLostFocus">
                             </TextBox>
                         </Grid>
                     </HierarchicalDataTemplate>

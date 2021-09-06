@@ -10,8 +10,8 @@ namespace WPF_MVC_UserManagement.Controller
 {
     public class UserManageTreeController
     {
-        ObservableCollection<UserManageTreeModel> parentGroupList = new ObservableCollection<UserManageTreeModel>();
-        private UserManageTreeModel editItem = new UserManageTreeModel();
+        private ObservableCollection<UserManageTreeModel> parentGroupList = new ObservableCollection<UserManageTreeModel>();
+        private UserManageTreeModel editItem = null;
 
         public delegate void DelegateUserGroupTree(ObservableCollection<UserManageTreeModel> userGroupTreeData);
         public event DelegateUserGroupTree delegateUserGroupTree;
@@ -58,14 +58,23 @@ namespace WPF_MVC_UserManagement.Controller
 
         public void CallRootAddClick()
         {
-            UserManageTreeModel parentGroupNode = new UserManageTreeModel(0, string.Empty, string.Empty, Visibility.Visible);
-            parentGroupList.Add(parentGroupNode);
-            editItem = parentGroupNode;
+            if (editItem == null)
+            {
+                UserManageTreeModel parentGroupNode = new UserManageTreeModel(0, string.Empty, string.Empty, Visibility.Visible);
+                parentGroupList.Add(parentGroupNode);
+                editItem = parentGroupNode;
+            }
         }
 
-        public void CallTreeEditCancle()
+        public void CallChildAddClick(UserManageTreeModel selectedItem)
         {
-            parentGroupList.Remove(editItem);
+            if (editItem == null)
+            {
+                UserManageTreeModel userGroupNode = new UserManageTreeModel(1, string.Empty, string.Empty, Visibility.Visible);
+                selectedItem.ChildGroupList.Add(userGroupNode);
+                editItem = userGroupNode;
+                editItem.ParentPrimaryKey = selectedItem.PrimaryKey;
+            }
         }
 
         public void CallDeleteClick(UserManageTreeModel selectedItem)
@@ -78,9 +87,19 @@ namespace WPF_MVC_UserManagement.Controller
                 {
                     case 0:
                         parentGroupList.Remove(selectedItem);
+                        string parentGroupDeleteQuery = string.Format("DELETE FROM {0} WHERE parent_group_id = '{1}'", "userparentgroup", selectedItem.PrimaryKey);
+                        MainWindow.DBManger.MySqlQueryExecuter(parentGroupDeleteQuery);
                         break;
                     case 1:
-
+                        foreach (UserManageTreeModel item in parentGroupList)
+                        {
+                            if (item.ChildGroupList.Remove(selectedItem))
+                            {
+                                string userGroupDeleteQuery = string.Format("DELETE FROM {0} WHERE group_id = '{1}'", "usergroup", selectedItem.PrimaryKey);
+                                MainWindow.DBManger.MySqlQueryExecuter(userGroupDeleteQuery);
+                                break;
+                            }
+                        }
                         break;
                     default:
                         break;
@@ -88,30 +107,143 @@ namespace WPF_MVC_UserManagement.Controller
             }
         }
 
-        public void CallTreeEditSave(string inputHeader)
+        public void CallRenameClick(UserManageTreeModel selectedItem)
         {
-            string tableName = "userparentgroup";
-            string parentGroupNameSelectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_name = '{1}'", tableName, inputHeader);
-            DataSet parentGroupNameDataSet = MainWindow.DBManger.Select(parentGroupNameSelectQuery, tableName);
-            if (parentGroupNameDataSet.Tables[0].Rows.Count > 0)
+            if (editItem == null)
             {
-                WarningMessageBoxView messageBox = new WarningMessageBoxView();
-                messageBox.ShowMessageBox("동일한 이름이 있습니다.", 0);
+                selectedItem.InputHeader = selectedItem.Header;
+                selectedItem.IsHeader = Visibility.Collapsed;
+                selectedItem.IsEdit = Visibility.Visible;
+                selectedItem.IsEditFocus = true;
+
+                editItem = selectedItem;
+            }
+        }
+
+        public void CallTreeEditSave(string inputHeader, UserManageTreeModel selectedItem)
+        {
+            // User Add Save
+            if (editItem.PrimaryKey == string.Empty)
+            {
+                string tableName = string.Empty;
+                string columnString = string.Empty;
+                string insertQuery = string.Empty;
+                string selectQuery = string.Empty;
+
+                switch (editItem.DepthCount)
+                {
+                    case 0:
+                        if(DuplicateNameCheck(inputHeader, parentGroupList))
+                        {
+                            tableName = "userparentgroup";
+                            columnString = "parent_group_id";
+                            insertQuery = string.Format("INSERT INTO {0}(parent_group_name) VALUES ('{1}')", tableName, inputHeader);
+                            selectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_name = '{1}'", tableName, inputHeader);
+                        }
+                        else { return; }
+                        break;
+
+
+                    case 1:
+                        if(DuplicateNameCheck(inputHeader, selectedItem.ChildGroupList))
+                        {
+                            tableName = "usergroup";
+                            columnString = "group_id";
+                            insertQuery = string.Format("INSERT INTO {0}(group_name, parent_group_id) VALUES ('{1}', '{2}')", tableName, inputHeader, selectedItem.PrimaryKey);
+                            selectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_id = '{1}' AND group_name = '{2}'", tableName, selectedItem.PrimaryKey, inputHeader);
+                        }
+                        else { return; }
+                        break;
+
+                    default:
+                        break;
+       
+                }
+
+                if (MainWindow.DBManger.MySqlQueryExecuter(insertQuery))
+                {
+                    DataSet parentGroupDataSet = MainWindow.DBManger.Select(selectQuery, tableName);
+
+                    editItem.PrimaryKey = parentGroupDataSet.Tables[0].Rows[0][columnString].ToString();
+                    editItem.Header = inputHeader;
+                    editItem.IsHeader = Visibility.Visible;
+                    editItem.IsEdit = Visibility.Collapsed;
+                    editItem = null;
+                }
+            }
+
+            // User Rename Save
+            else
+            {
+                if (inputHeader != editItem.Header)
+                {
+                    //DuplicateNameCheck(inputHeader, parentGroupList);
+                    string updateQuery = (editItem.DepthCount == 0) ? string.Format("UPDATE {0} SET parent_group_name = '{1}' WHERE parent_group_id = '{2}'", "userparentgroup", inputHeader, editItem.PrimaryKey)
+                                                                    : string.Format("UPDATE {0} SET group_name = '{1}' WHERE group_id = '{2}'", "usergroup", inputHeader, editItem.PrimaryKey);
+
+                    MainWindow.DBManger.MySqlQueryExecuter(updateQuery);
+                }
+
+                editItem.Header = inputHeader;
+                editItem.IsHeader = Visibility.Visible;
+                editItem.IsEdit = Visibility.Collapsed;
+                editItem = null;
+            }
+        }
+
+        public void CallTreeEditCancle()
+        {
+            // User Add Cancle
+            if (editItem.PrimaryKey == string.Empty)
+            {
+                switch (editItem.DepthCount)
+                {
+                    case 0:
+                        parentGroupList.Remove(editItem);
+                        break;
+                    case 1:
+                        foreach (UserManageTreeModel item in parentGroupList)
+                        {
+                            if (item.ChildGroupList.Remove(editItem))
+                            {
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            // User Rename Cancle
+            else
+            {
+                editItem.IsHeader = Visibility.Visible;
+                editItem.IsEdit = Visibility.Collapsed;
+                editItem.IsEditFocus = false;
+            }
+
+            editItem = null;
+        }
+
+        private bool DuplicateNameCheck(string inputHeader, ObservableCollection<UserManageTreeModel> userGroupList)
+        {
+            WarningMessageBoxView messageBox = new WarningMessageBoxView();
+
+            if(inputHeader == string.Empty)
+            {
+                return messageBox.ShowMessageBox("이름을 입력해야 합니다.", 0);
             }
             else
             {
-                string parentGroupInsertQuery = string.Format("INSERT INTO {0}(parent_group_name) VALUES ('{1}')", tableName, inputHeader);
-                if (MainWindow.DBManger.MySqlQueryExecuter(parentGroupInsertQuery))
+                foreach (UserManageTreeModel item in userGroupList)
                 {
-                    string parentGroupSelectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_name = '{1}'", tableName, inputHeader);
-                    DataSet parentGroupDataSet = MainWindow.DBManger.Select(parentGroupSelectQuery, tableName);
-                    string primaryKey = parentGroupDataSet.Tables[0].Rows[0]["parent_group_id"].ToString();
-
-                    editItem.PrimaryKey = primaryKey;
-                    editItem.Header = inputHeader;
-                    editItem.IsEdit = Visibility.Collapsed;
+                    if (item.Header == inputHeader)
+                    {
+                        return messageBox.ShowMessageBox("동일한 이름이 있습니다.", 0);
+                    }
                 }
             }
+
+            return true;
         }
     }
 }
