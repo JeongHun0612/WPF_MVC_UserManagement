@@ -5,6 +5,10 @@ namespace WPF_MVC_UserManagement.Model
 {
     public class UserManageTreeModel : NotifierCollection
     {
+        public UserManageTreeModel()
+        {
+        }
+
         public UserManageTreeModel(int depthCount, string primaryKey, string header)
         {
             this.depthCount = depthCount;
@@ -69,6 +73,40 @@ namespace WPF_MVC_UserManagement.Model
                 return this.childGroupList;
             }
             set { this.childGroupList = value; }
+        }
+
+        public class ParentUserGroup : NotifierCollection
+        {
+            public ParentUserGroup(string name)
+            {
+                this.Name = name;
+                this.Children = new ObservableCollection<UserGroup>();
+            }
+
+            public string Name { get; set; }
+            public ObservableCollection<UserGroup> Children { get; set; }
+        }
+
+        public class UserGroup : NotifierCollection
+        {
+            public UserGroup(string name)
+            {
+                this.Name = name;
+                this.Children = new ObservableCollection<User>();
+            }
+
+            public string Name { get; set; }
+            public ObservableCollection<User> Children { get; set; }
+        }
+
+        public class User : NotifierCollection
+        {
+            public User(string name)
+            {
+                this.Name = name;
+            }
+
+            public string Name { get; set; }
         }
     }
 }

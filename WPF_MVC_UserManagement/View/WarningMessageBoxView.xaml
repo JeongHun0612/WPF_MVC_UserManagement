@@ -29,7 +29,7 @@
                 <Button x:Name="closeButton" Style="{DynamicResource MessageBoxButtonStyle}" Content="Close" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Click="CloseClick"/>
             </Grid>
             <Grid x:Name="dangerMode" Visibility="Collapsed">
-                <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="OK" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="0,0,85,0"/>
+                <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="OK" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="0,0,85,0" Click="OKClick"/>
                 <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="Cancel" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="85,0,0,0" Click="CloseClick"/>
             </Grid>
         </Grid>

@@ -11,6 +11,7 @@ namespace WPF_MVC_UserManagement.Controller
     public class UserManageTreeController
     {
         ObservableCollection<UserManageTreeModel> parentGroupList = new ObservableCollection<UserManageTreeModel>();
+        private UserManageTreeModel editItem = new UserManageTreeModel();
 
         public delegate void DelegateUserGroupTree(ObservableCollection<UserManageTreeModel> userGroupTreeData);
         public event DelegateUserGroupTree delegateUserGroupTree;
@@ -19,7 +20,7 @@ namespace WPF_MVC_UserManagement.Controller
         {
             string[] tableName = new string[3] { "userparentgroup", "usergroup", "users" };
 
-            // ParentUserGroupSelect -------------------------------------------------------------------------------------------------------------------------------
+            // ParentUserGroupSelect --------------------------------------------------------------------------------------------------------------------------------
             string parentGroupSelectQuery = string.Format("SELECT * FROM {0}", tableName[0]);
             DataSet parentGroupDataSet = MainWindow.DBManger.Select(parentGroupSelectQuery, tableName[0]);
             foreach (DataRow parentUserGroup in parentGroupDataSet.Tables[0].Rows)
@@ -39,7 +40,7 @@ namespace WPF_MVC_UserManagement.Controller
                     UserManageTreeModel userGroupNode = new UserManageTreeModel(1, userGroupPrimaryKey, userGroupHeader);
                     parentGroupNode.ChildGroupList.Add(userGroupNode);
 
-                    // UserSelect ------------------------------------------------------------------------------------------------------------------------------------
+                    // UserSelect -----------------------------------------------------------------------------------------------------------------------------------
                     string userSelectQuery = string.Format("SELECT * FROM {0} WHERE group_id = '{1}'", tableName[2], userGroupPrimaryKey);
                     DataSet userDataSet = MainWindow.DBManger.Select(userSelectQuery, tableName[2]);
                     foreach (DataRow user in userDataSet.Tables[0].Rows)
@@ -59,12 +60,32 @@ namespace WPF_MVC_UserManagement.Controller
         {
             UserManageTreeModel parentGroupNode = new UserManageTreeModel(0, string.Empty, string.Empty, Visibility.Visible);
             parentGroupList.Add(parentGroupNode);
+            editItem = parentGroupNode;
         }
 
-        public void CallDeleteClick()
+        public void CallTreeEditCancle()
+        {
+            parentGroupList.Remove(editItem);
+        }
+
+        public void CallDeleteClick(UserManageTreeModel selectedItem)
         {
             WarningMessageBoxView messageBox = new WarningMessageBoxView();
-            messageBox.ShowMessageBox("모든 내용이 영구적으로 삭제됩니다.", 1);
+
+            if (messageBox.ShowMessageBox("모든 내용이 영구적으로 삭제됩니다.", 1))
+            {
+                switch (selectedItem.DepthCount)
+                {
+                    case 0:
+                        parentGroupList.Remove(selectedItem);
+                        break;
+                    case 1:
+
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public void CallTreeEditSave(string inputHeader)
@@ -86,16 +107,9 @@ namespace WPF_MVC_UserManagement.Controller
                     DataSet parentGroupDataSet = MainWindow.DBManger.Select(parentGroupSelectQuery, tableName);
                     string primaryKey = parentGroupDataSet.Tables[0].Rows[0]["parent_group_id"].ToString();
 
-                    foreach (UserManageTreeModel item in parentGroupList)
-                    {
-                        if (item.IsEdit == Visibility.Visible)
-                        {
-                            item.PrimaryKey = primaryKey;
-                            item.Header = inputHeader;
-                            item.IsEdit = Visibility.Collapsed;
-                            break;
-                        }
-                    }
+                    editItem.PrimaryKey = primaryKey;
+                    editItem.Header = inputHeader;
+                    editItem.IsEdit = Visibility.Collapsed;
                 }
             }
         }

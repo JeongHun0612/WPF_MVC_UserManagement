@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using WPF_MVC_UserManagement.Model;
 
 namespace WPF_MVC_UserManagement.View
@@ -48,16 +50,54 @@ namespace WPF_MVC_UserManagement.View
 
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.userManageTreeController.CallDeleteClick();
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            MainWindow.userManageTreeController.CallDeleteClick(selectedItem);
         }
 
-        private void TreeEditSave(object sender, KeyEventArgs e)
+        private void TreeEditKeyDown(object sender, KeyEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             if (e.Key == Key.Return)
             {
                 MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text);
             }
+
+            if (e.Key == Key.Escape)
+            {
+                MainWindow.userManageTreeController.CallTreeEditCancle();
+            }
+        }
+
+        private void TextBlock_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem treeViewItem = VisualUpwardSearch<TreeViewItem>(e.OriginalSource as DependencyObject);
+
+            if (treeViewItem != null)
+            {
+                treeViewItem.IsSelected = true;
+                e.Handled = true;
+            }
+        }
+
+        static T VisualUpwardSearch<T>(DependencyObject source) where T : DependencyObject
+        {
+            DependencyObject returnVal = source;
+
+            while (returnVal != null && !(returnVal is T))
+            {
+                DependencyObject tempReturnVal = null;
+                if (returnVal is Visual || returnVal is Visual3D)
+                {
+                    tempReturnVal = VisualTreeHelper.GetParent(returnVal);
+                }
+                if (tempReturnVal == null)
+                {
+                    returnVal = LogicalTreeHelper.GetParent(returnVal);
+                }
+                else returnVal = tempReturnVal;
+            }
+
+            return returnVal as T;
         }
     }
 }

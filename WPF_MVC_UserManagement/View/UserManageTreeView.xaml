@@ -19,7 +19,7 @@
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:UserManageTreeModel}" ItemsSource="{Binding ChildGroupList}">
                         <Grid>
-                            <TextBlock Text="{Binding Header}">
+                            <TextBlock Text="{Binding Header}" MouseRightButtonDown="TextBlock_MouseRightButtonDown">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Header="루트 추가" Click="RootAddClick"/>
@@ -29,7 +29,7 @@
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                                 <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}"> 
+                                    <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
                                                 <Setter Property="Foreground" Value="{StaticResource TreeViewSelectForegroundBrush}"/>
@@ -39,7 +39,7 @@
                                 </TextBlock.Style>
                             </TextBlock>
                             <TextBox x:Name="treeviewTextBox" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
-                                     KeyDown="TreeEditSave">
+                                     KeyDown="TreeEditKeyDown">
                             </TextBox>
                         </Grid>
                     </HierarchicalDataTemplate>

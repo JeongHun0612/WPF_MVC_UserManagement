@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 
 namespace WPF_MVC_UserManagement.View
 {
@@ -8,6 +7,8 @@ namespace WPF_MVC_UserManagement.View
     /// </summary>
     public partial class WarningMessageBoxView : Window
     {
+        private bool isResult = false;
+
         public WarningMessageBoxView()
         {
             InitializeComponent();
@@ -34,7 +35,13 @@ namespace WPF_MVC_UserManagement.View
 
             this.ShowDialog();
 
-            return true;
+            return isResult;
+        }
+
+        private void OKClick(object sender, RoutedEventArgs e)
+        {
+            isResult = true;
+            this.Close();
         }
 
         private void CloseClick(object sender, RoutedEventArgs e)
