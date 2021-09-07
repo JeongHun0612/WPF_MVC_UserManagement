@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WPF_MVC_UserManagement.Model
 {
     public class UserManageListModel : NotifierCollection
     {
-        public UserManageListModel(string primaryKey, string userName, string userBirth, string userId, string userPw, string userDepartment, string userEmployeeNum, string userNumber, string userGroupName, string userGroupId)
+        public UserManageListModel(string primaryKey, string userName, string userBirth, string userId, string userPw, string userDepartment, string userEmployeeNum, string userNumber, string userGroupName, string userGroupId, string parentUserGroupId)
         {
             this.primaryKey = primaryKey;
             this.userName = userName;
@@ -20,6 +21,7 @@ namespace WPF_MVC_UserManagement.Model
             this.userNumber = userNumber;
             this.userGroupName = userGroupName;
             this.userGroupId = userGroupId;
+            this.parentUserGroupId = parentUserGroupId;
         }
 
         private string primaryKey = string.Empty;
@@ -90,6 +92,20 @@ namespace WPF_MVC_UserManagement.Model
         {
             get { return this.userGroupId; }
             set { this.userGroupId = value; NotifyCollection("UserGroupId"); }
+        }
+
+        private string parentUserGroupId = string.Empty;
+        public string ParentUserGroupId
+        {
+            get { return this.parentUserGroupId; }
+            set { this.parentUserGroupId = value; NotifyCollection("ParentUserGroupId"); }
+        }
+
+        private Visibility isSelectedItem = Visibility.Collapsed;
+        public Visibility IsSelectedItem
+        {
+            get { return this.isSelectedItem; }
+            set { this.isSelectedItem = value; NotifyCollection("IsSelectedItem"); }
         }
     }
 }

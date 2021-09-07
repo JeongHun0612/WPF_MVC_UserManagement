@@ -23,7 +23,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:UserManageListModel}">
-                        <Grid Visibility="Visible">
+                        <Grid Visibility="{Binding IsSelectedItem}">
                             <Rectangle Fill="{StaticResource ListBoxItemBackgroundBrush}" Height="260" Width="380" RadiusY="10" RadiusX="10"/>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -42,9 +42,9 @@
                                     
                                     <Grid Grid.Column="0">
                                         <Rectangle Height="110" Width="110" Stroke="{StaticResource ListBoxItemImageBorderBrush}" RadiusX="7" RadiusY="7" Margin="0,0,0,50">
-                                            <Rectangle.Fill>
+                                            <!--<Rectangle.Fill>
                                                 <ImageBrush ImageSource="{Binding ProfileImage}"/>
-                                            </Rectangle.Fill>
+                                            </Rectangle.Fill>-->
                                         </Rectangle>
 
                                         <Button Content="Save" Style="{DynamicResource SaveButtonStyle}" Height="30" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,75,30"/>

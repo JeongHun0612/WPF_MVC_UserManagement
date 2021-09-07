@@ -64,20 +64,29 @@
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBoxItemHoverBorderBrush}"/>
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="1"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsSelectedItem}" Value="Collapsed">
+                            <Setter Property="BorderThickness" TargetName="Bd" Value="0"/>
+                            <Setter Property="Margin" TargetName="Bd" Value="0"/>
+                        </DataTrigger>
+                        <!--<MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBoxItemHoverBorderBrush}"/>
                             <Setter Property="BorderThickness" TargetName="Bd" Value="1"/>
-                        </MultiTrigger>
+                        </MultiTrigger>-->
                         <!--<DataTrigger Binding="{Binding IsReadOnly}" Value="false">
                             <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBoxItemHoverBorderBrush}"/>
                             <Setter Property="BorderThickness" TargetName="Bd" Value="1"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding IsUserListVisibility}" Value="false">
+                        </DataTrigger>-->
+                        <!--<DataTrigger Binding="{Binding IsSelectedItem}" Value="Collapsed">
                             <Setter Property="BorderThickness" TargetName="Bd" Value="0"/>
                             <Setter Property="Margin" TargetName="Bd" Value="0"/>
                         </DataTrigger>-->

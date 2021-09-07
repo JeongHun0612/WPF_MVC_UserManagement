@@ -101,7 +101,7 @@ namespace WPF_MVC_UserManagement.Model
                 }
                 return this.childGroupList;
             }
-            set { this.childGroupList = value; }
+            set { this.childGroupList = value; NotifyCollection("ChildGroupList"); }
         }
     }
 }

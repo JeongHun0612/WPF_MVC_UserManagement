@@ -18,6 +18,8 @@ namespace WPF_MVC_UserManagement.Controller
 
         public delegate void DelegateUserGroupTree(ObservableCollection<UserManageTreeModel> userGroupTreeData);
         public event DelegateUserGroupTree delegateUserGroupTree;
+        //public delegate void DelegateSelectedUserGroupList(ObservableCollection<UserManageTreeModel> selectedUserGroupListData);
+        //public event DelegateSelectedUserGroupList delegateSelectedUserGroupList;
 
         public void CallUserGroupTree()
         {

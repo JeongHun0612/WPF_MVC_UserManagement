@@ -64,6 +64,12 @@ namespace WPF_MVC_UserManagement.View
             MainWindow.userManageTreeController.CallRenameClick(selectedItem);
         }
 
+        private void TreeSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            MainWindow.userManageListController.CallSelectedItemChanged(selectedItem.DepthCount, selectedItem);
+        }
+
         private void TreeEditKeyDown(object sender, KeyEventArgs e)
         {
             UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
