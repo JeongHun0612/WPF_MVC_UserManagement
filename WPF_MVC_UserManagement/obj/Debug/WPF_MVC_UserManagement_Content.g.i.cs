@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/danger.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/editbuttonhover.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("image/editbuttonnormal.png")]
 
 

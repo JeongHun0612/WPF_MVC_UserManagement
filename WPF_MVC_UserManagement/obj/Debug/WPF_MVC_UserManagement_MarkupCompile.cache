@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\App.xaml
-14719793485
+16-876136006
 
-16130484167
+1947340539
 118-703174741
-Color\UIBrush.xaml;Color\UIColor.xaml;MainWindow.xaml;Style\ButtonStyle.xaml;Style\ContextMenuStyle.xaml;Style\ScrollBarStyle.xaml;Style\TabControlStyle.xaml;Style\TextBoxStyle.xaml;Style\TreeViewStyle.xaml;View\SystemTimeView.xaml;View\TitleNameView.xaml;View\UserManageTreeView.xaml;View\WarningMessageBoxView.xaml;View\WindowTitleBarView.xaml;
+Color\UIBrush.xaml;Color\UIColor.xaml;MainWindow.xaml;Style\ButtonStyle.xaml;Style\ContextMenuStyle.xaml;Style\ListBoxStyle.xaml;Style\ScrollBarStyle.xaml;Style\TabControlStyle.xaml;Style\TextBoxStyle.xaml;Style\TreeViewStyle.xaml;View\SystemTimeView.xaml;View\TitleNameView.xaml;View\UserManageListView.xaml;View\UserManageTreeView.xaml;View\WarningMessageBoxView.xaml;View\WindowTitleBarView.xaml;
 
 False
 

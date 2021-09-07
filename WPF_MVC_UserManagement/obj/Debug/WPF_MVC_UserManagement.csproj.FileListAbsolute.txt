@@ -47,3 +47,6 @@ C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\De
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\TextBoxStyle.baml
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\WarningMessageBoxView.g.cs
 C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\WarningMessageBoxView.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\UserManageListView.g.cs
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\View\UserManageListView.baml
+C:\Users\sjh96\source\repos\WPF_MVC_UserManagement\WPF_MVC_UserManagement\obj\Debug\Style\ListBoxStyle.baml

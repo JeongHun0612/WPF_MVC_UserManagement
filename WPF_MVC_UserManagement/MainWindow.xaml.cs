@@ -16,5 +16,6 @@ namespace WPF_MVC_UserManagement
 
         public static MySQLManager DBManger = new MySQLManager();
         public static UserManageTreeController userManageTreeController = new UserManageTreeController();
+        public static UserManageListController userManageListController = new UserManageListController();
     }
 }

@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="User List" VerticalContentAlignment="Center" FontSize="24" FontFamily="/Fonts/#Roboto Bold" Foreground="{StaticResource LabelForegroundBrush2}" Margin="15,0,0,0"/>
         <Grid Grid.Row="1">
-            <TreeView x:Name="userTreeView" TreeViewItem.Selected="userTreeView_Selected" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
+            <TreeView x:Name="userTreeView" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:UserManageTreeModel}" ItemsSource="{Binding ChildGroupList}">
                         <Grid>

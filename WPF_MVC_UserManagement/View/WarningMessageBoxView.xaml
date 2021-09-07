@@ -12,26 +12,26 @@
         SizeToContent="WidthAndHeight"
         Title="WarningMessageBoxView">
 
-    <Grid MinWidth="200">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="55"/>
-        </Grid.RowDefinitions>
-        <Border BorderBrush="{StaticResource WarningMessageBoxBorderBrush}" BorderThickness="0,0,0,0.5" Padding="20,15">
-            <Grid Grid.Row="0">
-                <Image x:Name="messageBoxWarningIcon" Width="40" Height="40" HorizontalAlignment="Left" Source="/WPF_MVC_UserManagement;component/Image/warningIcon.png" Margin="2,0,0,0"/>
-                <Image x:Name="messageBoxDangerIcon" Width="45" Height="45" HorizontalAlignment="Left" Source="/WPF_MVC_UserManagement;component/Image/dangerIcon.png"/>
-                <Label x:Name="messageBoxLabel" Content="테스트 테스트 테스트" VerticalAlignment="Center" Foreground="{StaticResource WarningMessageBoxForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="14" Margin="45,0,0,0"/>
-            </Grid>
-        </Border>
-        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Grid x:Name="warningMode" Visibility="Collapsed">
-                <Button x:Name="closeButton" Style="{DynamicResource MessageBoxButtonStyle}" Content="Close" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Click="CloseClick"/>
-            </Grid>
-            <Grid x:Name="dangerMode" Visibility="Collapsed">
-                <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="OK" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="0,0,85,0" Click="OKClick"/>
-                <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="Cancel" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="85,0,0,0" Click="CloseClick"/>
+        <Grid MinWidth="200">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="55"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="{StaticResource WarningMessageBoxBorderBrush}" BorderThickness="0,0,0,0.5" Padding="20,15">
+                <Grid Grid.Row="0">
+                    <Image x:Name="messageBoxWarningIcon" Width="40" Height="40" HorizontalAlignment="Left" Source="/WPF_MVC_UserManagement;component/Image/warningIcon.png" Margin="2,0,0,0"/>
+                    <Image x:Name="messageBoxDangerIcon" Width="45" Height="45" HorizontalAlignment="Left" Source="/WPF_MVC_UserManagement;component/Image/dangerIcon.png"/>
+                    <Label x:Name="messageBoxLabel" Content="테스트 테스트 테스트" VerticalAlignment="Center" Foreground="{StaticResource WarningMessageBoxForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="14" Margin="45,0,0,0"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid x:Name="warningMode" Visibility="Collapsed">
+                    <Button x:Name="closeButton" Style="{DynamicResource MessageBoxButtonStyle}" Content="Close" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Click="CloseClick"/>
+                </Grid>
+                <Grid x:Name="dangerMode" Visibility="Collapsed">
+                    <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="OK" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="0,0,85,0" Click="OKClick"/>
+                    <Button Style="{DynamicResource MessageBoxButtonStyle}" Content="Cancel" Height="27" Width="65" FontFamily="/Fonts/#Roboto Regular" Margin="85,0,0,0" Click="CloseClick"/>
+                </Grid>
             </Grid>
         </Grid>
-    </Grid>
 </Window>

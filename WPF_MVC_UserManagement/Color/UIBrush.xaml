@@ -19,10 +19,22 @@
     <SolidColorBrush x:Key="WarningMessageBoxButtonHoverBackgroundBrush" Color="{StaticResource Color_010}"/>
     <SolidColorBrush x:Key="WarningMessageBoxButtonPressedBackgroundBrush" Color="{StaticResource Color_011}"/>
     <SolidColorBrush x:Key="WarningMessageBoxButtonHoverForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="SaveButtonBackgroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="SaveButtonHoverBackgroundBrush" Color="{StaticResource Color_010}"/>
+    <SolidColorBrush x:Key="SaveButtonPressedBackgroundBrush" Color="{StaticResource Color_011}"/>
+    <SolidColorBrush x:Key="SaveButtonForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="CancleButtonBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="CancleButtonHoverBorderBrush" Color="{StaticResource Color_013}"/>
+    <SolidColorBrush x:Key="CancleButtonPressedBorderBrush" Color="{StaticResource Color_011}"/>
+    <SolidColorBrush x:Key="CancleButtonForegroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="CancleButtonHoverForegroundBrush" Color="{StaticResource Color_013}"/>
+    <SolidColorBrush x:Key="CancleButtonPressedForegroundBrush" Color="{StaticResource Color_011}"/>
 
     <!-- Shapes Brush -->
     <SolidColorBrush x:Key="ShapesStrokeBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ShapesFillBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ShapesHoverStrokeBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ShapesPressedStrokeBrush" Color="{StaticResource Color_010}"/>
 
     <!-- Label Brush -->
     <SolidColorBrush x:Key="LabelForegroundBrush1" Color="{StaticResource Color_003}"/>
@@ -51,5 +63,13 @@
     <SolidColorBrush x:Key="WarningMessageBoxBorderBrush" Color="{StaticResource Color_009}"/>
     <SolidColorBrush x:Key="WarningMessageBoxForegroundBrush" Color="{StaticResource Color_003}"/>
 
+    <!-- ListBoxItem Brush -->
+    <SolidColorBrush x:Key="ListBoxItemBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ListBoxItemHoverBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ListBoxItemImageBorderBrush" Color="{StaticResource Color_012}"/>
+    <SolidColorBrush x:Key="ListBoxItemForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ListBoxItemTextBoxBorderBrush" Color="{StaticResource Color_014}"/>
+    <SolidColorBrush x:Key="ListBoxItemTextBoxHoverBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ListBoxItemTextBoxFocusBorderBrush" Color="{StaticResource Color_015}"/>
 
 </ResourceDictionary>

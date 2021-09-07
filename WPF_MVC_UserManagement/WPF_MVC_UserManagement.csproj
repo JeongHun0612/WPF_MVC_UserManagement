@@ -60,8 +60,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
+    <Compile Include="Controller\UserManageListController.cs" />
     <Compile Include="Controller\UserManageTreeController.cs" />
     <Compile Include="Library\FocusExtension.cs" />
+    <Compile Include="Model\UserManageListModel.cs" />
     <Compile Include="Model\UserManageTreeModel.cs" />
     <Compile Include="MySQLManager.cs" />
     <Compile Include="Notifier.cs" />
@@ -70,6 +72,9 @@
     </Compile>
     <Compile Include="View\TitleNameView.xaml.cs">
       <DependentUpon>TitleNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserManageListView.xaml.cs">
+      <DependentUpon>UserManageListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserManageTreeView.xaml.cs">
       <DependentUpon>UserManageTreeView.xaml</DependentUpon>
@@ -108,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\ListBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Style\ScrollBarStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\TitleNameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserManageListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +218,13 @@
   <ItemGroup>
     <Resource Include="Image\warningIcon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\addUserHover.png" />
+    <Resource Include="Image\addUserNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\editButtonHover.png" />
+    <Resource Include="Image\editButtonNormal.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,9 +11,12 @@
 
                 <!-- UI Style -->
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ButtonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TabControlStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/TreeViewStyle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ContextMenuStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ListBoxStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPF_MVC_UserManagement;component/Style/ScrollBarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

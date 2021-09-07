@@ -5,7 +5,7 @@
     <Color x:Key="Color_000">#FF141C1E</Color>
     <Color x:Key="Color_001">#FF212A30</Color>
     <Color x:Key="Color_009">#FF5F5F5F</Color>
-
+    
     <!-- Main Color -->
     <Color x:Key="Color_002">#FFF1F1F1</Color>
     <Color x:Key="Color_003">#FF0CC486</Color>
@@ -19,5 +19,8 @@
     <Color x:Key="Color_008">#FF1F2428</Color>
     <Color x:Key="Color_010">#FF17B28D</Color>
     <Color x:Key="Color_011">#FF0AA681</Color>
-
+    <Color x:Key="Color_012">#FFBFBFBF</Color>
+    <Color x:Key="Color_013">#FF91C9B6</Color>
+    <Color x:Key="Color_014">#FF9B9C9C</Color>
+    <Color x:Key="Color_015">#FF10AA76</Color>
 </ResourceDictionary>

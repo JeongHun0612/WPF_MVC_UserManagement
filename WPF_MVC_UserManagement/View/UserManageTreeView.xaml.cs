@@ -45,12 +45,11 @@ namespace WPF_MVC_UserManagement.View
 
         private void ChildAddClick(object sender, RoutedEventArgs e)
         {
-            //TreeViewItem item = (TreeViewItem)(userTreeView.ItemContainerGenerator.ContainerFromIndex(userTreeView.Items.CurrentItem));
-            //item.IsExpanded = true;
-            //Debug.WriteLine(item.Header);
+            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
+            TreeViewItem item = (TreeViewItem)userTreeView.ItemContainerGenerator.ContainerFromItem(selectedItem);
+            item.IsExpanded = true;
 
-            //UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
-            //MainWindow.userManageTreeController.CallChildAddClick(selectedItem);
+            MainWindow.userManageTreeController.CallChildAddClick(selectedItem);
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
@@ -73,12 +72,15 @@ namespace WPF_MVC_UserManagement.View
             if (e.Key == Key.Return)
             {
                 MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text, selectedItem);
+
             }
 
             if (e.Key == Key.Escape)
             {
                 MainWindow.userManageTreeController.CallTreeEditCancle();
             }
+
+            textBox.Focus();
         }
 
         private void TreeEditLostFocus(object sender, RoutedEventArgs e)
@@ -119,15 +121,6 @@ namespace WPF_MVC_UserManagement.View
             }
 
             return returnVal as T;
-        }
-
-        private void userTreeView_Selected(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("selected");
-            TreeViewItem tvi = e.OriginalSource as TreeViewItem;
-            tvi.IsExpanded = true;
-
-            Debug.WriteLine(tvi.Header);
         }
     }
 }

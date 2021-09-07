@@ -48,26 +48,12 @@
 
                         <view:UserManageTreeView Grid.Column="0" Grid.RowSpan="2"/>
                         <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource MainBackgroundBrush}" Margin="0, -2"/>
+                        <view:UserManageListView Grid.Column="2" Grid.Row="0"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="System Config" Style="{DynamicResource TabItemSystemConfigStyle}" FontFamily="/Fonts/#Roboto" Margin="0,75,0,-75">
-
                 </TabItem>
                 <TabItem Header="User Manage" Style="{DynamicResource TabItemUserManageStyle}" FontFamily="/Fonts/#Roboto"  Margin="0,75,0,-75">
-                    <!--<Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="350"/>
-                            <ColumnDefinition Width="5"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="165"/>
-                        </Grid.RowDefinitions>
-
-                        <view:UserManageTreeView Grid.Column="0" Grid.RowSpan="2"/>
-                        <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource MainBackgroundBrush}" Margin="0, -2"/>
-                    </Grid>-->
                 </TabItem>
             </TabControl>
         </Grid>
