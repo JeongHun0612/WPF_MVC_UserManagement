@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,16 @@ namespace WPF_MVC_UserManagement.Model
             this.userGroupName = userGroupName;
             this.userGroupId = userGroupId;
             this.parentUserGroupId = parentUserGroupId;
+        }
+
+        public UserManageListModel()
+        {
+            this.isReadOnly = false;
+            this.isTextBoxFocus = true;
+            this.isSelectedVisibility = Visibility.Visible;
+            this.isNormalModeVisibility = Visibility.Collapsed;
+            this.isEditModeVisibility = Visibility.Visible;
+            this.isUserGroupList = Visibility.Visible;
         }
 
         private string primaryKey = string.Empty;
@@ -94,6 +105,20 @@ namespace WPF_MVC_UserManagement.Model
             set { this.userGroupId = value; NotifyCollection("UserGroupId"); }
         }
 
+        private ObservableCollection<UserManageTreeModel> userGroupList = null;
+        public ObservableCollection<UserManageTreeModel> UserGroupList
+        {
+            get { return this.userGroupList; }
+            set { this.userGroupList = value; NotifyCollection("UserGroupList"); }
+        }
+
+        private UserManageTreeModel selectedComboBoxItem = null;
+        public UserManageTreeModel SelectedComboBoxItem
+        {
+            get { return this.selectedComboBoxItem; }
+            set { this.selectedComboBoxItem = value; NotifyCollection("SelectedComboBoxItem"); }
+        }
+
         private string parentUserGroupId = string.Empty;
         public string ParentUserGroupId
         {
@@ -101,11 +126,46 @@ namespace WPF_MVC_UserManagement.Model
             set { this.parentUserGroupId = value; NotifyCollection("ParentUserGroupId"); }
         }
 
-        private Visibility isSelectedItem = Visibility.Collapsed;
-        public Visibility IsSelectedItem
+        private bool isReadOnly = true;
+        public bool IsReadOnly
         {
-            get { return this.isSelectedItem; }
-            set { this.isSelectedItem = value; NotifyCollection("IsSelectedItem"); }
+            get { return this.isReadOnly; }
+            set { this.isReadOnly = value; NotifyCollection("IsReadOnly"); }
+        }
+
+        private bool isTextBoxFocus = false;
+        public bool IsTextBoxFocus
+        {
+            get { return this.isTextBoxFocus; }
+            set { this.isTextBoxFocus = value; NotifyCollection("IsTextBoxFocus"); }
+        }
+
+        private Visibility isSelectedVisibility = Visibility.Collapsed;
+        public Visibility IsSelectedVisibility
+        {
+            get { return this.isSelectedVisibility; }
+            set { this.isSelectedVisibility = value; NotifyCollection("IsSelectedVisibility"); }
+        }
+
+        private Visibility isNormalModeVisibility = Visibility.Visible;
+        public Visibility IsNormalModeVisibility
+        {
+            get { return this.isNormalModeVisibility; }
+            set { this.isNormalModeVisibility = value; NotifyCollection("IsNormalModeVisibility"); }
+        }
+
+        private Visibility isEditModeVisibility = Visibility.Collapsed;
+        public Visibility IsEditModeVisibility
+        {
+            get { return this.isEditModeVisibility; }
+            set { this.isEditModeVisibility = value; NotifyCollection("IsEditModeVisibility"); }
+        }
+
+        private Visibility isUserGroupList = Visibility.Collapsed;
+        public Visibility IsUserGroupList
+        {
+            get { return this.isUserGroupList; }
+            set { this.isUserGroupList = value; NotifyCollection("IsUserGroupList"); }
         }
     }
 }

@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WPF_MVC_UserManagement.Library;
 using WPF_MVC_UserManagement.Model;
 
 namespace WPF_MVC_UserManagement.View
@@ -44,6 +32,49 @@ namespace WPF_MVC_UserManagement.View
         private void SendUserGroupList(ObservableCollection<UserManageListModel> userGroupListData)
         {
             userListBox.ItemsSource = userGroupListData;
+        }
+
+        private void AddUserClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow.userManageListController.CallAddUserClick();
+        }
+
+        private void EditUserClick(object sender, RoutedEventArgs e)
+        {
+            SelectedItem(sender, e);
+            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
+            MainWindow.userManageListController.CallEditUserClick(selectedItem);
+        }
+
+        private void CancleClick(object sender, RoutedEventArgs e)
+        {
+            SelectedItem(sender, e);
+            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
+            MainWindow.userManageListController.CallCancleClick(selectedItem);
+        }
+
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+            SelectedItem(sender, e);
+            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
+            MainWindow.userManageListController.CallSaveClick(selectedItem);
+        }
+
+        private void DeleteUserClick(object sender, RoutedEventArgs e)
+        {
+            SelectedItem(sender, e);
+            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
+            MainWindow.userManageListController.CallDeleteUserClick(selectedItem);
+        }
+
+        private void SelectedItem(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem listBoxItem = VisualUpward.VisualUpwardSearch<ListBoxItem>(e.OriginalSource as DependencyObject);
+            if (listBoxItem != null)
+            {
+                listBoxItem.IsSelected = true;
+                e.Handled = true;
+            }
         }
     }
 }

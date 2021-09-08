@@ -10,11 +10,11 @@ namespace WPF_MVC_UserManagement
     {
         public MainWindow()
         {
-            DBManger.Initialize();
+            DBManager.Initialize();
             InitializeComponent();
         }
 
-        public static MySQLManager DBManger = new MySQLManager();
+        public static MySQLManager DBManager = new MySQLManager();
         public static UserManageTreeController userManageTreeController = new UserManageTreeController();
         public static UserManageListController userManageListController = new UserManageListController();
     }

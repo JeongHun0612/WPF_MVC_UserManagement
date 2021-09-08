@@ -68,7 +68,7 @@ namespace WPF_MVC_UserManagement.View
 
         private void ExitClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.DBManger.CloseMySqlConnection();
+            MainWindow.DBManager.CloseMySqlConnection();
             SystemTimeView.Timer.Stop();
             Environment.Exit(0);
         }

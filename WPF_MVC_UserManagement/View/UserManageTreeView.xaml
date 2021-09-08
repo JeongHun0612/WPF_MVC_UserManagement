@@ -38,7 +38,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBox x:Name="treeviewTextBox" Text="{Binding InputHeader}" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
+                            <TextBox x:Name="treeviewTextBox" Text="{Binding InputHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" ContextMenu="{x:Null}" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
                                      KeyDown="TreeEditKeyDown" LostFocus="TreeEditLostFocus">
                             </TextBox>
                         </Grid>

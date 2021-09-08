@@ -12,7 +12,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Style="{DynamicResource AddUserButtonStyle}" Width="150" Height="40" HorizontalAlignment="Right" Margin="0,0,70,0"/>
+        <Button Grid.Row="0" Style="{DynamicResource AddUserButtonStyle}" Width="150" Height="40" HorizontalAlignment="Right" Margin="0,0,70,0" Click="AddUserClick"/>
         <Grid Grid.Row="1">
             <ListBox Style="{DynamicResource ListBoxStyle}" x:Name="userListBox" HorizontalAlignment="Center" VerticalAlignment="Center"
                      ItemContainerStyle="{DynamicResource ListBoxItemStyle}">
@@ -23,7 +23,7 @@
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:UserManageListModel}">
-                        <Grid Visibility="{Binding IsSelectedItem}">
+                        <Grid Visibility="{Binding IsSelectedVisibility}">
                             <Rectangle Fill="{StaticResource ListBoxItemBackgroundBrush}" Height="260" Width="380" RadiusY="10" RadiusX="10"/>
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -31,24 +31,28 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <Button Grid.Row="0" Style="{DynamicResource EditButtonStyle}" Width="65" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,0"/>
-                                <Button Grid.Row="0" Style="{DynamicResource DeleteButtonStyle}" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,15,0"/>
+                                <Grid Visibility="{Binding IsNormalModeVisibility}">
+                                    <Button Grid.Row="0" Style="{DynamicResource EditButtonStyle}" Width="65" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,8,0,0" Click="EditUserClick"/>
+                                    <Button Grid.Row="0" Style="{DynamicResource DeleteButtonStyle}" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,10,15,0" Click="DeleteUserClick"/>
+                                </Grid>
 
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="180"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <Grid Grid.Column="0">
-                                        <Rectangle Height="110" Width="110" Stroke="{StaticResource ListBoxItemImageBorderBrush}" RadiusX="7" RadiusY="7" Margin="0,0,0,50">
+                                        <Rectangle Height="110" Width="110" Stroke="{StaticResource ListBoxItemImageBorderBrush}" RadiusX="7" RadiusY="7" Margin="0,0,0,35">
                                             <!--<Rectangle.Fill>
                                                 <ImageBrush ImageSource="{Binding ProfileImage}"/>
                                             </Rectangle.Fill>-->
                                         </Rectangle>
 
-                                        <Button Content="Save" Style="{DynamicResource SaveButtonStyle}" Height="30" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,75,30"/>
-                                        <Button Content="Cancel" Style="{DynamicResource CancleButtonStyle}" Height="28" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="75,0,0,31" />
+                                        <Grid Visibility="{Binding IsEditModeVisibility}">
+                                            <Button Content="Save" Style="{DynamicResource SaveButtonStyle}" Height="30" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,75,30" Click="SaveClick"/>
+                                            <Button Content="Cancel" Style="{DynamicResource CancleButtonStyle}" Height="28" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="75,0,0,31" Click="CancleClick"/>
+                                        </Grid>
                                     </Grid>
 
                                     <Grid Grid.Column="1">
@@ -64,28 +68,29 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" Content="성명" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserName}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserName}" IsReadOnly="{Binding IsReadOnly}" local:FocusExtension.IsFocused="{Binding IsTextBoxFocus}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="1" Content="생년월일" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="1" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserBirth}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="1" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserBirth}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="2" Content="아이디" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="2" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserId}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="2" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserId}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="3" Content="비밀번호" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="3" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserPw}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="3" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserPw}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="4" Content="소속" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="4" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserDepartment}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="4" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserDepartment}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="5" Content="사번" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="5" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserEmployeeNum}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="5" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserEmployeeNum}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="6" Content="그룹" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <ComboBox Grid.Row="6" Style="{DynamicResource ComboBoxStyle}" ItemsSource="{Binding UserGroupList}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" DisplayMemberPath="Header" SelectedItem="{Binding SelectedComboBoxItem}" Visibility="{Binding IsUserGroupList}" IsReadOnly="True" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="7" Content="연락처" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" Foreground="Gainsboro"/>
-                                        <TextBox Grid.Row="7" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserNumber}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="7" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserNumber}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
                                     </Grid>
                                 </Grid>
                             </Grid>

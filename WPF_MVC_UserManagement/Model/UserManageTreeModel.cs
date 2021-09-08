@@ -10,8 +10,6 @@ namespace WPF_MVC_UserManagement.Model
             this.depthCount = depthCount;
             this.primaryKey = primaryKey;
             this.header = header;
-            this.isHeader = Visibility.Visible;
-            this.isEdit = Visibility.Collapsed;
         }
 
         public UserManageTreeModel(int depthCount, string primaryKey, string parentPrimaryKey, string header)
@@ -20,18 +18,16 @@ namespace WPF_MVC_UserManagement.Model
             this.primaryKey = primaryKey;
             this.parentPrimaryKey = parentPrimaryKey;
             this.header = header;
-            this.isHeader = Visibility.Visible;
-            this.isEdit = Visibility.Collapsed;
         }
 
-        public UserManageTreeModel(int depthCount, string primaryKey, string header, Visibility isEdit)
+        public UserManageTreeModel(int depthCount)
         {
             this.depthCount = depthCount;
-            this.primaryKey = primaryKey;
-            this.header = header;
-            this.isEdit = isEdit;
-            this.isEditFocus = true;
+            this.primaryKey = string.Empty;
+            this.header = string.Empty;
             this.isHeader = Visibility.Collapsed;
+            this.isEdit = Visibility.Visible;
+            this.isEditFocus = true;
         }
 
         private int depthCount;
@@ -69,14 +65,14 @@ namespace WPF_MVC_UserManagement.Model
             set { this.inputHeader = value; NotifyCollection("InputHeader"); }
         }
 
-        private Visibility isHeader;
+        private Visibility isHeader = Visibility.Visible;
         public Visibility IsHeader
         {
             get { return this.isHeader; }
             set { this.isHeader = value; NotifyCollection("IsHeader"); }
         }
 
-        private Visibility isEdit;
+        private Visibility isEdit = Visibility.Collapsed;
         public Visibility IsEdit
         {
             get { return this.isEdit; }

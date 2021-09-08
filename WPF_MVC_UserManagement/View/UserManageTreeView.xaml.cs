@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
+using WPF_MVC_UserManagement.Library;
 using WPF_MVC_UserManagement.Model;
 
 namespace WPF_MVC_UserManagement.View
@@ -15,6 +16,7 @@ namespace WPF_MVC_UserManagement.View
     /// </summary>
     public partial class UserManageTreeView : UserControl
     {
+        private TextBox testTextBox = new TextBox();
         public UserManageTreeView()
         {
             InitializeComponent();
@@ -47,7 +49,10 @@ namespace WPF_MVC_UserManagement.View
         {
             UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
             TreeViewItem item = (TreeViewItem)userTreeView.ItemContainerGenerator.ContainerFromItem(selectedItem);
-            item.IsExpanded = true;
+            if (item != null)
+            {
+                item.IsExpanded = true;
+            }
 
             MainWindow.userManageTreeController.CallChildAddClick(selectedItem);
         }
@@ -67,17 +72,16 @@ namespace WPF_MVC_UserManagement.View
         private void TreeSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
-            MainWindow.userManageListController.CallSelectedItemChanged(selectedItem.DepthCount, selectedItem);
+            MainWindow.userManageListController.CallSelectedItemChanged(selectedItem);
         }
 
         private void TreeEditKeyDown(object sender, KeyEventArgs e)
         {
             UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
-            TextBox textBox = sender as TextBox;
 
             if (e.Key == Key.Return)
             {
-                MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text, selectedItem);
+                MainWindow.userManageTreeController.CallTreeEditSave(selectedItem);
 
             }
 
@@ -85,48 +89,30 @@ namespace WPF_MVC_UserManagement.View
             {
                 MainWindow.userManageTreeController.CallTreeEditCancle();
             }
-
-            textBox.Focus();
         }
 
         private void TreeEditLostFocus(object sender, RoutedEventArgs e)
         {
             UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
             TextBox textBox = sender as TextBox;
+            testTextBox = textBox;
 
-            MainWindow.userManageTreeController.CallTreeEditSave(textBox.Text, selectedItem);
+            if (textBox.Visibility == Visibility.Visible)
+            {
+                MainWindow.userManageTreeController.CallTreeEditSave(selectedItem);
+            }
+
+            //textBox.Focus();
         }
 
         private void TextBlock_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            TreeViewItem treeViewItem = VisualUpwardSearch<TreeViewItem>(e.OriginalSource as DependencyObject);
-
+            TreeViewItem treeViewItem = VisualUpward.VisualUpwardSearch<TreeViewItem>(e.OriginalSource as DependencyObject);
             if (treeViewItem != null)
             {
                 treeViewItem.IsSelected = true;
                 e.Handled = true;
             }
-        }
-
-        static T VisualUpwardSearch<T>(DependencyObject source) where T : DependencyObject
-        {
-            DependencyObject returnVal = source;
-
-            while (returnVal != null && !(returnVal is T))
-            {
-                DependencyObject tempReturnVal = null;
-                if (returnVal is Visual || returnVal is Visual3D)
-                {
-                    tempReturnVal = VisualTreeHelper.GetParent(returnVal);
-                }
-                if (tempReturnVal == null)
-                {
-                    returnVal = LogicalTreeHelper.GetParent(returnVal);
-                }
-                else returnVal = tempReturnVal;
-            }
-
-            return returnVal as T;
         }
     }
 }

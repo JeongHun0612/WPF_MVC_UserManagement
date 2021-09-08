@@ -72,4 +72,14 @@
     <SolidColorBrush x:Key="ListBoxItemTextBoxHoverBorderBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="ListBoxItemTextBoxFocusBorderBrush" Color="{StaticResource Color_015}"/>
 
+    <!-- ComboBox Brush -->
+    <SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ComboBoxHoverBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ComboBoxForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ComboBoxItemBackgroundBrush" Color="{StaticResource Color_001}"/>
+    <SolidColorBrush x:Key="ComboBoxItemForegroundBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ComboBoxToggleButtonBackgroundBrush" Color="{StaticResource Color_003}"/>
+
+
 </ResourceDictionary>

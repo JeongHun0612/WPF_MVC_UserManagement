@@ -63,6 +63,8 @@
     <Compile Include="Controller\UserManageListController.cs" />
     <Compile Include="Controller\UserManageTreeController.cs" />
     <Compile Include="Library\FocusExtension.cs" />
+    <Compile Include="Library\VisualUpwardSerach.cs" />
+    <Compile Include="Model\ComboBoxGroupListModel.cs" />
     <Compile Include="Model\UserManageListModel.cs" />
     <Compile Include="Model\UserManageTreeModel.cs" />
     <Compile Include="MySQLManager.cs" />
@@ -108,6 +110,10 @@
     <Page Include="Style\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\ComboBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Style\ContextMenuStyle.xaml">
       <Generator>MSBuild:Compile</Generator>

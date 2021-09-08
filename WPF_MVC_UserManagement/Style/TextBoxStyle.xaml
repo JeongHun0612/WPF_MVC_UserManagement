@@ -8,7 +8,6 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{StaticResource ListBoxItemForegroundBrush}"/>
         <Setter Property="MaxLength" Value="20"/>
-        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="CaretBrush" Value="White"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontFamily" Value="/Fonts/#KoPubDotum Medium"/>
@@ -25,6 +24,7 @@
                         </Trigger>
                         <Trigger Property="IsReadOnly" Value="False">
                             <Setter Property="BorderThickness" TargetName="border" Value="0,0,0,1"/>
+                            <Setter Property="Margin" TargetName="border" Value="0,0,0,-1"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ListBoxItemTextBoxHoverBorderBrush}"/>
