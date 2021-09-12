@@ -29,6 +29,10 @@
     <SolidColorBrush x:Key="CancleButtonForegroundBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="CancleButtonHoverForegroundBrush" Color="{StaticResource Color_013}"/>
     <SolidColorBrush x:Key="CancleButtonPressedForegroundBrush" Color="{StaticResource Color_011}"/>
+    <SolidColorBrush x:Key="ImageEditButtonBorderBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="ImageEditButtonBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="ImageEditButtonHoverBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="ImageEditButtonPressedBorderBrush" Color="{StaticResource Color_010}"/>
 
     <!-- Shapes Brush -->
     <SolidColorBrush x:Key="ShapesStrokeBrush" Color="{StaticResource Color_002}"/>
@@ -39,6 +43,11 @@
     <!-- Label Brush -->
     <SolidColorBrush x:Key="LabelForegroundBrush1" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="LabelForegroundBrush2" Color="{StaticResource Color_002}"/>
+    
+    <!-- TextBox Brush -->
+    <SolidColorBrush x:Key="LogTextBoxBackgroundBrush" Color="{StaticResource Color_001}"/>
+    <SolidColorBrush x:Key="LogTextBoxBorderBrush" Color="{StaticResource Color_001}"/>
+    <SolidColorBrush x:Key="LogTextBoxForegroundBrush" Color="{StaticResource Color_002}"/>
 
     <!-- TabItem Brush -->
     <SolidColorBrush x:Key="TabItemInnerBackgroundBrush" Color="{StaticResource Color_001}"/>
@@ -56,7 +65,6 @@
     <SolidColorBrush x:Key="ContextMenuBackgroundBrush" Color="{StaticResource Color_008}"/>
     <SolidColorBrush x:Key="ContextMenuForegroundBrush" Color="{StaticResource Color_002}"/>
     <SolidColorBrush x:Key="ContextMenuSelectForegroundBrush" Color="{StaticResource Color_003}"/>
-
 
     <!-- WarningMessageBoxView Brush -->
     <SolidColorBrush x:Key="WarningMessageBoxBackgroundBrush" Color="{StaticResource Color_002}"/>

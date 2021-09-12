@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,15 +61,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config.cs" />
+    <Compile Include="Controller\LogListController.cs" />
     <Compile Include="Controller\UserManageListController.cs" />
     <Compile Include="Controller\UserManageTreeController.cs" />
     <Compile Include="Library\FocusExtension.cs" />
     <Compile Include="Library\VisualUpwardSerach.cs" />
-    <Compile Include="Model\ComboBoxGroupListModel.cs" />
     <Compile Include="Model\UserManageListModel.cs" />
     <Compile Include="Model\UserManageTreeModel.cs" />
     <Compile Include="MySQLManager.cs" />
     <Compile Include="Notifier.cs" />
+    <Compile Include="View\LogListView.xaml.cs">
+      <DependentUpon>LogListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SystemTimeView.xaml.cs">
       <DependentUpon>SystemTimeView.xaml</DependentUpon>
     </Compile>
@@ -119,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\DataGridStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Style\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,6 +146,10 @@
     <Page Include="Style\TreeViewStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LogListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SystemTimeView.xaml">
       <SubType>Designer</SubType>

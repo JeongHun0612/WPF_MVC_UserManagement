@@ -5,7 +5,7 @@
     <Color x:Key="Color_000">#FF141C1E</Color>
     <Color x:Key="Color_001">#FF212A30</Color>
     <Color x:Key="Color_009">#FF5F5F5F</Color>
-    
+
     <!-- Main Color -->
     <Color x:Key="Color_002">#FFF1F1F1</Color>
     <Color x:Key="Color_003">#FF0CC486</Color>

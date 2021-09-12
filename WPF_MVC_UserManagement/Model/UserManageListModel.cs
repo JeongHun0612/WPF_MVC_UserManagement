@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace WPF_MVC_UserManagement.Model
 {
     public class UserManageListModel : NotifierCollection
     {
-        public UserManageListModel(string primaryKey, string userName, string userBirth, string userId, string userPw, string userDepartment, string userEmployeeNum, string userNumber, string userGroupName, string userGroupId, string parentUserGroupId)
+        public UserManageListModel(string primaryKey, string userName, string userBirth, string userId, string userPw, string userDepartment, string userEmployeeNum, string userNumber, string userGroupName, string userGroupId, string parentUserGroupId, BitmapImage profileImage)
         {
             this.primaryKey = primaryKey;
             this.userName = userName;
@@ -23,6 +20,7 @@ namespace WPF_MVC_UserManagement.Model
             this.userGroupName = userGroupName;
             this.userGroupId = userGroupId;
             this.parentUserGroupId = parentUserGroupId;
+            this.profileImage = profileImage;
         }
 
         public UserManageListModel()
@@ -61,6 +59,13 @@ namespace WPF_MVC_UserManagement.Model
         {
             get { return this.userId; }
             set { this.userId = value; NotifyCollection("UserId"); }
+        }
+
+        private string tempUserId = string.Empty;
+        public string TempUserId
+        {
+            get { return this.tempUserId; }
+            set { this.tempUserId = value; NotifyCollection("TempUserId"); }
         }
 
         private string userPw = string.Empty;
@@ -105,7 +110,14 @@ namespace WPF_MVC_UserManagement.Model
             set { this.userGroupId = value; NotifyCollection("UserGroupId"); }
         }
 
-        private ObservableCollection<UserManageTreeModel> userGroupList = null;
+        private ImageSource profileImage;
+        public ImageSource ProfileImage
+        {
+            get { return this.profileImage; }
+            set { this.profileImage = value; NotifyCollection("ProfileImage"); }
+        }
+
+        private ObservableCollection<UserManageTreeModel> userGroupList = new ObservableCollection<UserManageTreeModel>();
         public ObservableCollection<UserManageTreeModel> UserGroupList
         {
             get { return this.userGroupList; }
@@ -140,7 +152,7 @@ namespace WPF_MVC_UserManagement.Model
             set { this.isTextBoxFocus = value; NotifyCollection("IsTextBoxFocus"); }
         }
 
-        private Visibility isSelectedVisibility = Visibility.Collapsed;
+        private Visibility isSelectedVisibility = Visibility.Visible;
         public Visibility IsSelectedVisibility
         {
             get { return this.isSelectedVisibility; }

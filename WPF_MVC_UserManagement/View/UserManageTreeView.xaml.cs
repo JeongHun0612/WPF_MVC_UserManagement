@@ -16,7 +16,6 @@ namespace WPF_MVC_UserManagement.View
     /// </summary>
     public partial class UserManageTreeView : UserControl
     {
-        private TextBox testTextBox = new TextBox();
         public UserManageTreeView()
         {
             InitializeComponent();
@@ -77,11 +76,9 @@ namespace WPF_MVC_UserManagement.View
 
         private void TreeEditKeyDown(object sender, KeyEventArgs e)
         {
-            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
-
             if (e.Key == Key.Return)
             {
-                MainWindow.userManageTreeController.CallTreeEditSave(selectedItem);
+                MainWindow.userManageTreeController.CallTreeEditSave();
 
             }
 
@@ -93,16 +90,7 @@ namespace WPF_MVC_UserManagement.View
 
         private void TreeEditLostFocus(object sender, RoutedEventArgs e)
         {
-            UserManageTreeModel selectedItem = userTreeView.SelectedItem as UserManageTreeModel;
-            TextBox textBox = sender as TextBox;
-            testTextBox = textBox;
-
-            if (textBox.Visibility == Visibility.Visible)
-            {
-                MainWindow.userManageTreeController.CallTreeEditSave(selectedItem);
-            }
-
-            //textBox.Focus();
+            MainWindow.userManageTreeController.CallTreeEditCancle();
         }
 
         private void TextBlock_MouseRightButtonDown(object sender, MouseButtonEventArgs e)

@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="WPF_MVC_UserManagement.View.LogListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_MVC_UserManagement.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="165" d:DesignWidth="1345">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource MainBackgroundBrush}">
+            <Label Content="Log List" Foreground="{StaticResource LogTextBoxForegroundBrush}" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Medium" Margin="8,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBox x:Name="logTextBox" Margin="10,0,0,0" Style="{DynamicResource LogTextBoxStyle}"/>
+        </Grid>
+    </Grid>
+</UserControl>

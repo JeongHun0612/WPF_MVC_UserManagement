@@ -229,4 +229,37 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- ImageEditButtonStyle -->
+    <Style x:Key="ImageEditButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid">
+                        <Ellipse x:Name="iconElipes" Width="20" Height="20" Stroke="{StaticResource ImageEditButtonBorderBrush}" Fill="{StaticResource ImageEditButtonBackgroundBrush}"/>
+                        <Line x:Name="iconLine1" X1="4" Y1="10" X2="16" Y2="10" Stroke="{StaticResource ImageEditButtonBorderBrush}" StrokeThickness="1.5"/>
+                        <Line x:Name="iconLine2" X1="10" Y1="4" X2="10" Y2="16" Stroke="{StaticResource ImageEditButtonBorderBrush}" StrokeThickness="1.5" Visibility="Collapsed"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ProfileImage}" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="iconLine2" Value="Visible"/>
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Stroke" TargetName="iconElipes" Value="{StaticResource ImageEditButtonHoverBorderBrush}"/>
+                            <Setter Property="Stroke" TargetName="iconLine1" Value="{StaticResource ImageEditButtonHoverBorderBrush}"/>
+                            <Setter Property="Stroke" TargetName="iconLine2" Value="{StaticResource ImageEditButtonHoverBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Stroke" TargetName="iconElipes" Value="{StaticResource ImageEditButtonPressedBorderBrush}"/>
+                            <Setter Property="Stroke" TargetName="iconLine1" Value="{StaticResource ImageEditButtonPressedBorderBrush}"/>
+                            <Setter Property="Stroke" TargetName="iconLine2" Value="{StaticResource ImageEditButtonPressedBorderBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

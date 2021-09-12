@@ -11,7 +11,6 @@ namespace WPF_MVC_UserManagement.Controller
     public class UserManageTreeController
     {
         public ObservableCollection<UserManageTreeModel> parentGroupList = new ObservableCollection<UserManageTreeModel>();
-        public ObservableCollection<UserManageTreeModel> comboBoxGroupList = new ObservableCollection<UserManageTreeModel>();
         private UserManageTreeModel editItem = null;
 
         private string[] tableName = new string[3] { "userparentgroup", "usergroup", "users" };
@@ -31,7 +30,6 @@ namespace WPF_MVC_UserManagement.Controller
                 string parentGroupHeader = parentUserGroup["parent_group_name"].ToString();
                 UserManageTreeModel parentGroupNode = new UserManageTreeModel(0, parentGroupPrimaryKey, parentGroupHeader);
                 parentGroupList.Add(parentGroupNode);
-                comboBoxGroupList.Add(parentGroupNode);
 
                 // UserGroupSelect ----------------------------------------------------------------------------------------------------------------------------------
                 string userGroupSelectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_id = '{1}'", tableName[1], parentGroupPrimaryKey);
@@ -42,7 +40,6 @@ namespace WPF_MVC_UserManagement.Controller
                     string userGroupHeader = userGroup["group_name"].ToString();
                     UserManageTreeModel userGroupNode = new UserManageTreeModel(1, userGroupPrimaryKey, parentGroupPrimaryKey, userGroupHeader);
                     parentGroupNode.ChildGroupList.Add(userGroupNode);
-                    comboBoxGroupList.Add(userGroupNode);
 
                     // UserSelect -----------------------------------------------------------------------------------------------------------------------------------
                     string userSelectQuery = string.Format("SELECT * FROM {0} WHERE group_id = '{1}'", tableName[2], userGroupPrimaryKey);
@@ -130,34 +127,35 @@ namespace WPF_MVC_UserManagement.Controller
             }
         }
 
-        public void CallTreeEditSave(UserManageTreeModel selectedItem)
+        public void CallTreeEditSave()
         {
+            string selectQuery = string.Empty;
+            string insertQuery = string.Empty;
+            string updateQuery = string.Empty;
+
+            switch (editItem.DepthCount)
+            {
+                case 0:
+                    selectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_name = '{1}'", tableName[0], editItem.InputHeader);
+                    if (DuplicateNameCheck(selectQuery, tableName[0]) == false) { return; }
+
+                    insertQuery = string.Format("INSERT INTO {0}(parent_group_name) VALUES ('{1}')", tableName[0], editItem.InputHeader);
+                    updateQuery = string.Format("UPDATE {0} SET parent_group_name = '{1}' WHERE parent_group_id = '{2}'", tableName[0], editItem.InputHeader, editItem.PrimaryKey);
+                    break;
+                case 1:
+                    selectQuery = string.Format("SELECT * FROM {0} WHERE group_name = '{1}' AND parent_group_id = '{2}'", tableName[1], editItem.InputHeader, editItem.ParentPrimaryKey);
+                    if (DuplicateNameCheck(selectQuery, tableName[1]) == false) { return; }
+
+                    insertQuery = string.Format("INSERT INTO {0}(group_name, parent_group_id) VALUES ('{1}', '{2}')", tableName[1], editItem.InputHeader, editItem.ParentPrimaryKey);
+                    updateQuery = string.Format("UPDATE {0} SET group_name = '{1}' WHERE group_id = '{2}'", tableName[1], editItem.InputHeader, editItem.PrimaryKey);
+                    break;
+                default:
+                    break;
+            }
+
             // User Add Save
             if (editItem.PrimaryKey == string.Empty)
             {
-                string insertQuery = string.Empty;
-                string selectQuery = string.Empty;
-
-                switch (editItem.DepthCount)
-                {
-                    case 0:
-                        if (DuplicateNameCheck(editItem.InputHeader, parentGroupList) == false) { return; }
-                        insertQuery = string.Format("INSERT INTO {0}(parent_group_name) VALUES ('{1}')", tableName[0], editItem.InputHeader);
-                        selectQuery = string.Format("SELECT * FROM {0} WHERE parent_group_name = '{1}'", tableName[0], editItem.InputHeader);
-                        break;
-
-
-                    case 1:
-                        if (DuplicateNameCheck(editItem.InputHeader, selectedItem.ChildGroupList) == false) { return; }
-                        insertQuery = string.Format("INSERT INTO {0}(group_name, parent_group_id) VALUES ('{1}', '{2}')", tableName[1], editItem.InputHeader, selectedItem.PrimaryKey);
-                        selectQuery = string.Format("SELECT * FROM {0} WHERE group_name = '{1}' AND parent_group_id = '{2}'", tableName[1], editItem.InputHeader, selectedItem.PrimaryKey);
-                        editItem.ParentPrimaryKey = selectedItem.PrimaryKey;
-                        break;
-
-                    default:
-                        break;
-                }
-
                 MainWindow.DBManager.MySqlQueryExecuter(insertQuery);
                 DataSet parentGroupDataSet = MainWindow.DBManager.Select(selectQuery, tableName[editItem.DepthCount]);
                 editItem.PrimaryKey = parentGroupDataSet.Tables[0].Rows[0][columnIdString[editItem.DepthCount]].ToString();
@@ -166,36 +164,8 @@ namespace WPF_MVC_UserManagement.Controller
             // User Rename Save
             else
             {
-                string updateQuery = string.Empty;
-
                 if (editItem.Header != editItem.InputHeader)
                 {
-                    switch (editItem.DepthCount)
-                    {
-                        case 0:
-                            if (DuplicateNameCheck(editItem.InputHeader, parentGroupList) == false) { return; }
-                            updateQuery = string.Format("UPDATE {0} SET parent_group_name = '{1}' WHERE parent_group_id = '{2}'", tableName[0], editItem.InputHeader, editItem.PrimaryKey);
-                            break;
-
-                        case 1:
-                            ObservableCollection<UserManageTreeModel> userGroupList = new ObservableCollection<UserManageTreeModel>();
-                            foreach (UserManageTreeModel item in parentGroupList)
-                            {
-                                if (item.PrimaryKey == editItem.ParentPrimaryKey)
-                                {
-                                    userGroupList = item.ChildGroupList;
-                                    break;
-                                }
-                            }
-
-                            if (DuplicateNameCheck(editItem.InputHeader, userGroupList) == false) { return; }
-                            updateQuery = string.Format("UPDATE {0} SET group_name = '{1}' WHERE group_id = '{2}'", tableName[1], editItem.InputHeader, editItem.PrimaryKey);
-                            break;
-
-                        default:
-                            break;
-                    }
-
                     MainWindow.DBManager.MySqlQueryExecuter(updateQuery);
                 }
             }
@@ -209,54 +179,51 @@ namespace WPF_MVC_UserManagement.Controller
 
         public void CallTreeEditCancle()
         {
-            // User Add Cancle
-            if (editItem.PrimaryKey == string.Empty)
+            if (editItem != null)
             {
-                switch (editItem.DepthCount)
+                // User Add Cancle
+                if (editItem.PrimaryKey == string.Empty)
                 {
-                    case 0:
-                        parentGroupList.Remove(editItem);
-                        break;
-                    case 1:
-                        foreach (UserManageTreeModel item in parentGroupList)
-                        {
-                            if (item.ChildGroupList.Remove(editItem))
+                    switch (editItem.DepthCount)
+                    {
+                        case 0:
+                            parentGroupList.Remove(editItem);
+                            break;
+                        case 1:
+                            foreach (UserManageTreeModel item in parentGroupList)
                             {
-                                break;
+                                if (item.ChildGroupList.Remove(editItem)) { break; }
                             }
-                        }
-                        break;
+                            break;
+                    }
                 }
-            }
 
-            // User Rename Cancle
-            else
-            {
-                editItem.IsHeader = Visibility.Visible;
-                editItem.IsEdit = Visibility.Collapsed;
-                editItem.IsEditFocus = false;
-            }
+                // User Rename Cancle
+                else
+                {
+                    editItem.IsHeader = Visibility.Visible;
+                    editItem.IsEdit = Visibility.Collapsed;
+                    editItem.IsEditFocus = false;
+                }
 
-            editItem = null;
+                editItem = null;
+            }
         }
 
-        private bool DuplicateNameCheck(string inputHeader, ObservableCollection<UserManageTreeModel> userGroupList)
+        private bool DuplicateNameCheck(string selectQuery, string tableName)
         {
             WarningMessageBoxView messageBox = new WarningMessageBoxView();
 
-            if (inputHeader == string.Empty)
+            if (editItem.InputHeader == string.Empty)
             {
                 return messageBox.ShowMessageBox("이름을 입력해야 합니다.", 0);
             }
             else
             {
-                foreach (UserManageTreeModel item in userGroupList)
+                DataSet selectDataSet = MainWindow.DBManager.Select(selectQuery, tableName);
+                if (selectDataSet.Tables[0].Rows.Count > 0 && (editItem.Header != editItem.InputHeader))
                 {
-                    if (item.Header == inputHeader)
-                    {
-                        editItem.IsEditFocus = false;
-                        return messageBox.ShowMessageBox("동일한 이름이 있습니다.", 0);
-                    }
+                    return messageBox.ShowMessageBox("동일한 이름이 있습니다.", 0);
                 }
             }
 

@@ -37,28 +37,28 @@ namespace WPF_MVC_UserManagement.Model
             set { this.depthCount = value; NotifyCollection("DepthCount"); }
         }
 
-        private string primaryKey;
+        private string primaryKey = string.Empty;
         public string PrimaryKey
         {
             get { return this.primaryKey; }
             set { this.primaryKey = value; NotifyCollection("PrimaryKey"); }
         }
 
-        private string parentPrimaryKey;
+        private string parentPrimaryKey = string.Empty;
         public string ParentPrimaryKey
         {
             get { return this.parentPrimaryKey; }
             set { this.parentPrimaryKey = value; NotifyCollection("ParentPrimaryKey"); }
         }
 
-        private string header;
+        private string header = string.Empty;
         public string Header
         {
             get { return this.header; }
             set { this.header = value; NotifyCollection("Header"); }
         }
 
-        private string inputHeader;
+        private string inputHeader = string.Empty;
         public string InputHeader
         {
             get { return this.inputHeader; }
@@ -79,7 +79,7 @@ namespace WPF_MVC_UserManagement.Model
             set { this.isEdit = value; NotifyCollection("IsEdit"); }
         }
 
-        private bool isEditFocus;
+        private bool isEditFocus = false;
         public bool IsEditFocus
         {
             get { return this.isEditFocus; }

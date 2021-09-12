@@ -48,16 +48,12 @@ namespace WPF_MVC_UserManagement.View
 
         private void CancleClick(object sender, RoutedEventArgs e)
         {
-            SelectedItem(sender, e);
-            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
-            MainWindow.userManageListController.CallCancleClick(selectedItem);
+            MainWindow.userManageListController.CallCancleClick();
         }
 
         private void SaveClick(object sender, RoutedEventArgs e)
         {
-            SelectedItem(sender, e);
-            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
-            MainWindow.userManageListController.CallSaveClick(selectedItem);
+            MainWindow.userManageListController.CallSaveClick();
         }
 
         private void DeleteUserClick(object sender, RoutedEventArgs e)
@@ -65,6 +61,13 @@ namespace WPF_MVC_UserManagement.View
             SelectedItem(sender, e);
             UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
             MainWindow.userManageListController.CallDeleteUserClick(selectedItem);
+        }
+
+        private void ProfileEditClick(object sender, RoutedEventArgs e)
+        {
+            SelectedItem(sender, e);
+            UserManageListModel selectedItem = userListBox.SelectedItem as UserManageListModel;
+            MainWindow.userManageListController.CallProfileEditClick();
         }
 
         private void SelectedItem(object sender, RoutedEventArgs e)

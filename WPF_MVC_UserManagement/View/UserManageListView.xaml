@@ -44,12 +44,13 @@
 
                                     <Grid Grid.Column="0">
                                         <Rectangle Height="110" Width="110" Stroke="{StaticResource ListBoxItemImageBorderBrush}" RadiusX="7" RadiusY="7" Margin="0,0,0,35">
-                                            <!--<Rectangle.Fill>
+                                            <Rectangle.Fill>
                                                 <ImageBrush ImageSource="{Binding ProfileImage}"/>
-                                            </Rectangle.Fill>-->
+                                            </Rectangle.Fill>
                                         </Rectangle>
 
                                         <Grid Visibility="{Binding IsEditModeVisibility}">
+                                            <Button Style="{DynamicResource ImageEditButtonStyle}" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,32,27,0" Click="ProfileEditClick"/>
                                             <Button Content="Save" Style="{DynamicResource SaveButtonStyle}" Height="30" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="0,0,75,30" Click="SaveClick"/>
                                             <Button Content="Cancel" Style="{DynamicResource CancleButtonStyle}" Height="28" Width="72" VerticalAlignment="Bottom" FontSize="16" Margin="75,0,0,31" Click="CancleClick"/>
                                         </Grid>
@@ -86,9 +87,9 @@
                                         <TextBox Grid.Row="5" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserEmployeeNum}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="6" Content="그룹" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" Margin="25,0,0,0"/>
                                         <ComboBox Grid.Row="6" Style="{DynamicResource ComboBoxStyle}" ItemsSource="{Binding UserGroupList}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" DisplayMemberPath="Header" SelectedItem="{Binding SelectedComboBoxItem}" Visibility="{Binding IsUserGroupList}" IsReadOnly="True" Margin="25,0,0,0"/>
-
+                                        
                                         <Label Grid.Row="7" Content="연락처" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" Foreground="Gainsboro"/>
                                         <TextBox Grid.Row="7" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserNumber}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
                                     </Grid>
