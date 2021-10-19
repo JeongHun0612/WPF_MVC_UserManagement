@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_MVC_UserManagement.View"
+             xmlns:model="clr-namespace:WPF_MVC_UserManagement.Model"
              mc:Ignorable="d" 
              d:DesignHeight="165" d:DesignWidth="1345">
     
@@ -16,7 +17,22 @@
             <Label Content="Log List" Foreground="{StaticResource LogTextBoxForegroundBrush}" VerticalAlignment="Center" FontSize="13" FontFamily="/Fonts/#Roboto Medium" Margin="8,0,0,0"/>
         </Grid>
         <Grid Grid.Row="1">
-            <TextBox x:Name="logTextBox" Margin="10,0,0,0" Style="{DynamicResource LogTextBoxStyle}"/>
+            <!--<TextBox x:Name="logTextBox" Margin="10,0,0,0" Style="{DynamicResource LogTextBoxStyle}"/>-->
+            <DataGrid x:Name="DataGridLog" GridLinesVisibility="None" HeadersVisibility="Row" AutoGenerateColumns="False"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.ScrollChanged="DataGridLog_ScrollChanged" Background="{StaticResource LogTextBoxBackgroundBrush}" BorderBrush="{StaticResource LogTextBoxBorderBrush}" Foreground="{StaticResource LogTextBoxForegroundBrush}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="Auto" Binding="{Binding Time}" IsReadOnly="True"/>
+                    <DataGridTextColumn ElementStyle="{DynamicResource LevelTextStyle}" Width="Auto" Binding="{Binding Level}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="*" Binding="{Binding Content}" IsReadOnly="True">
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{StaticResource LogTextBoxBackgroundBrush}"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>

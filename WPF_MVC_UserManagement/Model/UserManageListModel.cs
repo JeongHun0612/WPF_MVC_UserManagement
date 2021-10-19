@@ -152,6 +152,20 @@ namespace WPF_MVC_UserManagement.Model
             set { this.isTextBoxFocus = value; NotifyCollection("IsTextBoxFocus"); }
         }
 
+        private Visibility isPwTextBoxVisibility = Visibility.Collapsed;
+        public Visibility IsPwTextBoxVisibility
+        {
+            get { return this.isPwTextBoxVisibility; }
+            set { this.isPwTextBoxVisibility = value; NotifyCollection("IsPwTextBoxVisibility"); }
+        }
+
+        private Visibility isPwPasswordBoxVisibility = Visibility.Visible;
+        public Visibility IsPwPasswordBoxVisibility
+        {
+            get { return this.isPwPasswordBoxVisibility; }
+            set { this.isPwPasswordBoxVisibility = value; NotifyCollection("IsPwPasswordBoxVisibility"); }
+        }
+
         private Visibility isSelectedVisibility = Visibility.Visible;
         public Visibility IsSelectedVisibility
         {

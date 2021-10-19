@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="{x:Type MenuItem}">
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="/Fonts/#KoPubDotumMedium"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -19,22 +20,12 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="Header" Value="이름 바꾸기">
-                            <Setter Property="Visibility" TargetName="RectAngle" Value="Collapsed"/>
-                        </Trigger>
                         <Trigger Property="IsHighlighted" Value="true">
                             <Setter Property="Foreground" Value="{StaticResource ContextMenuSelectForegroundBrush}"/>
                         </Trigger>
                         <Trigger Property="IsHighlighted" Value="false">
                             <Setter Property="Foreground" Value="{StaticResource ContextMenuForegroundBrush}"/>
                         </Trigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding DepthCount}" Value="1"/>
-                                <Condition Binding="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=Header}" Value="루트 추가"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -52,7 +43,7 @@
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
                     <Border x:Name="Border" Background="{StaticResource ContextMenuBackgroundBrush}" BorderThickness="1" CornerRadius="10" Padding="0, 10">
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="Transparent"/>
+                            <SolidColorBrush Color="#FFF1F1F1"/>
                         </Border.BorderBrush>
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
                     </Border>
@@ -65,5 +56,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

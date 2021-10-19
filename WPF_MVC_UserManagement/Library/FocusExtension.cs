@@ -14,14 +14,10 @@ namespace WPF_MVC_UserManagement
             obj.SetValue(IsFocusedProperty, value);
         }
 
-        public static readonly DependencyProperty IsFocusedProperty =
-            DependencyProperty.RegisterAttached(
-                "IsFocused", typeof(bool), typeof(FocusExtension),
-                new UIPropertyMetadata(false, OnIsFocusedPropertyChanged));
+        public static readonly DependencyProperty IsFocusedProperty = 
+            DependencyProperty.RegisterAttached("IsFocused", typeof(bool), typeof(FocusExtension), new UIPropertyMetadata(false, OnIsFocusedPropertyChanged));
 
-        private static void OnIsFocusedPropertyChanged(
-            DependencyObject d,
-            DependencyPropertyChangedEventArgs e)
+        private static void OnIsFocusedPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var uie = (UIElement)d;
             if ((bool)e.NewValue)

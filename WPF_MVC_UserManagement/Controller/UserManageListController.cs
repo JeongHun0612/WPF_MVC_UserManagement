@@ -110,6 +110,9 @@ namespace WPF_MVC_UserManagement.Controller
                 editItem = new UserManageListModel();
                 userList.Insert(0, editItem);
 
+                editItem.IsPwTextBoxVisibility = Visibility.Visible;
+                editItem.IsPwPasswordBoxVisibility = Visibility.Collapsed;
+
                 UserGroupListInit();
                 if (treeSelectedItem != null)
                 {
@@ -130,7 +133,7 @@ namespace WPF_MVC_UserManagement.Controller
                 }
             }
 
-            MainWindow.logListController.CallLogList("유저 생성");
+            MainWindow.logListController.CallAddLogList("[추가]", "유저 추가");
         }
 
         public void CallEditUserClick(UserManageListModel selectedItem)
@@ -235,6 +238,8 @@ namespace WPF_MVC_UserManagement.Controller
             {
                 UserInfoReset();
                 editItem.IsReadOnly = true;
+                editItem.IsPwTextBoxVisibility = Visibility.Collapsed;
+                editItem.IsPwPasswordBoxVisibility = Visibility.Visible;
                 editItem.IsEditModeVisibility = Visibility.Collapsed;
                 editItem.IsUserGroupList = Visibility.Collapsed;
             }
@@ -278,6 +283,8 @@ namespace WPF_MVC_UserManagement.Controller
             ProfileImageEdit();
             editItem.IsReadOnly = true;
             editItem.IsNormalModeVisibility = Visibility.Visible;
+            editItem.IsPwTextBoxVisibility = Visibility.Collapsed;
+            editItem.IsPwPasswordBoxVisibility = Visibility.Visible;
             editItem.IsEditModeVisibility = Visibility.Collapsed;
             editItem.IsUserGroupList = Visibility.Collapsed;
             editItem.UserGroupName = editItem.SelectedComboBoxItem.Header;

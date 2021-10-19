@@ -65,7 +65,9 @@
     <Compile Include="Controller\UserManageListController.cs" />
     <Compile Include="Controller\UserManageTreeController.cs" />
     <Compile Include="Library\FocusExtension.cs" />
+    <Compile Include="Library\PasswordHelper.cs" />
     <Compile Include="Library\VisualUpwardSerach.cs" />
+    <Compile Include="Model\LogListModel.cs" />
     <Compile Include="Model\UserManageListModel.cs" />
     <Compile Include="Model\UserManageTreeModel.cs" />
     <Compile Include="MySQLManager.cs" />
@@ -124,8 +126,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Style\DataGridStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\ListBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +136,10 @@
     <Page Include="Style\ScrollBarStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Style\ScrollBarStyle2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Style\TabControlStyle.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -68,30 +68,31 @@
                                             <RowDefinition/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Content="성명" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserName}" IsReadOnly="{Binding IsReadOnly}" local:FocusExtension.IsFocused="{Binding IsTextBoxFocus}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="0" Content="성명" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}"  Text="{Binding UserName}" IsReadOnly="{Binding IsReadOnly}" local:FocusExtension.IsFocused="{Binding IsTextBoxFocus}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="1" Content="생년월일" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="1" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserBirth}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="1" Content="생년월일" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="1" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserBirth}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="2" Content="아이디" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="2" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserId}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="2" Content="아이디" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="2" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserId}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="3" Content="비밀번호" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="3" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserPw}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="3" Content="비밀번호" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <PasswordBox Grid.Row="3" Style="{DynamicResource ReadOnlyPasswordBoxStyle}" local:PasswordHelper.Attach="True" local:PasswordHelper.Password="{Binding UserPw}" Visibility="{Binding IsPwPasswordBoxVisibility}" IsEnabled="False" PasswordChar="*" Width="95" Margin="25,5,0,0"/>
+                                        <TextBox Grid.Row="3" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserPw}" IsReadOnly="{Binding IsReadOnly}" Visibility="{Binding IsPwTextBoxVisibility}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="4" Content="소속" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="4" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserDepartment}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="4" Content="소속" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="4" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserDepartment}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="5" Content="사번" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="5" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserEmployeeNum}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="5" Content="사번" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="5" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserEmployeeNum}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
 
-                                        <Label Grid.Row="6" Content="그룹" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" />
-                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" Margin="25,0,0,0"/>
+                                        <Label Grid.Row="6" Content="그룹" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="6" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserGroupName}" IsReadOnly="{Binding IsReadOnly}" Width="95" Focusable="False" Margin="25,0,0,0"/>
                                         <ComboBox Grid.Row="6" Style="{DynamicResource ComboBoxStyle}" ItemsSource="{Binding UserGroupList}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle}" DisplayMemberPath="Header" SelectedItem="{Binding SelectedComboBoxItem}" Visibility="{Binding IsUserGroupList}" IsReadOnly="True" Margin="25,0,0,0"/>
-                                        
-                                        <Label Grid.Row="7" Content="연락처" HorizontalAlignment="Left" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12" Foreground="Gainsboro"/>
-                                        <TextBox Grid.Row="7" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserNumber}" IsReadOnly="{Binding IsReadOnly}" Width="95" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,0,0,0"/>
+
+                                        <Label Grid.Row="7" Content="연락처" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
+                                        <TextBox Grid.Row="7" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserNumber}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
                                     </Grid>
                                 </Grid>
                             </Grid>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_MVC_UserManagement.Model;
 
 namespace WPF_MVC_UserManagement.View
 {
@@ -24,6 +26,7 @@ namespace WPF_MVC_UserManagement.View
         {
             InitializeComponent();
             ControllerInit();
+            LogListInit();
         }
 
         private void ControllerInit()
@@ -31,9 +34,22 @@ namespace WPF_MVC_UserManagement.View
             MainWindow.logListController.delegateLogList += SendLogList;
         }
 
-        private void SendLogList(string logListData)
+        private void LogListInit()
         {
-            logTextBox.Text += logListData;
+            MainWindow.logListController.CallLogList();
+        }
+
+        private void SendLogList(ObservableCollection<LogListModel> logListData)
+        {
+            DataGridLog.ItemsSource = logListData;
+        }
+
+        private void DataGridLog_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.OriginalSource is ScrollViewer scrollViewer && e.ExtentHeightChange > 0.0)
+            {
+                scrollViewer.ScrollToEnd();
+            }
         }
     }
 }

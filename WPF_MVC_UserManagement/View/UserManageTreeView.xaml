@@ -10,11 +10,30 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="User List" VerticalContentAlignment="Center" FontSize="24" FontFamily="/Fonts/#Roboto Bold" Foreground="{StaticResource LabelForegroundBrush2}" Margin="15,0,0,0"/>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
+            <Label Content="User List" VerticalAlignment="Bottom" FontSize="18" FontFamily="/Fonts/#Roboto Bold" Margin="15,0,0,0">
+                <Label.ContextMenu>
+                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                        <MenuItem Header="루트 추가" Click="RootAddClick"/>
+                    </ContextMenu>
+                </Label.ContextMenu>
+                <Label.Style>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Foreground" Value="{StaticResource LabelForegroundBrush2}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{StaticResource LabelForegroundBrush1}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+        </Grid>
+        
+        <Grid Grid.Row="1" Margin="8,5,0,0">
             <TreeView x:Name="userTreeView" Style="{DynamicResource TreeViewStyle}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="20,0,0,0" SelectedItemChanged="TreeSelectedItemChanged">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate DataType="{x:Type model:UserManageTreeModel}" ItemsSource="{Binding ChildGroupList}">
@@ -22,7 +41,6 @@
                             <TextBlock Text="{Binding Header}" Visibility="{Binding IsHeader}" MouseRightButtonDown="TextBlock_MouseRightButtonDown">
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem Header="루트 추가" Click="RootAddClick"/>
                                         <MenuItem Header="추가" Click="ChildAddClick"/>
                                         <MenuItem Header="삭제" Click="DeleteClick"/>
                                         <MenuItem Header="이름 바꾸기" Click="RenameClick"/>
