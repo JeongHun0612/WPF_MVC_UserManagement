@@ -8,8 +8,8 @@
     <!-- DataGridCellStyle -->
     <Style TargetType="{x:Type DataGridCell}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="{StaticResource LogTextBoxBackgroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource LogTextBoxBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource DataGridBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DataGridBorderBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
@@ -24,14 +24,14 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#FF283A41"/>
+                <Setter Property="Background" Value="#313743"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="true"/>
                     <Condition Property="Selector.IsSelectionActive" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Background" Value="#313743"/>
+                <Setter Property="Background" Value="#282D37"/>
                 <Setter Property="Foreground" Value="#FFF1F1F1"/>
             </MultiTrigger>
         </Style.Triggers>

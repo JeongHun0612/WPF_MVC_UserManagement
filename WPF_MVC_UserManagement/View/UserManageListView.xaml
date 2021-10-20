@@ -69,7 +69,7 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" Content="성명" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
-                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}"  Text="{Binding UserName}" IsReadOnly="{Binding IsReadOnly}" local:FocusExtension.IsFocused="{Binding IsTextBoxFocus}" Width="95" Margin="25,0,0,0"/>
+                                        <TextBox Grid.Row="0" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserName}" IsReadOnly="{Binding IsReadOnly}" local:FocusExtension.IsFocused="{Binding IsTextBoxFocus}" Width="95" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="1" Content="생년월일" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
                                         <TextBox Grid.Row="1" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserBirth}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
@@ -78,7 +78,7 @@
                                         <TextBox Grid.Row="2" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserId}" IsReadOnly="{Binding IsReadOnly}" Width="95" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="3" Content="비밀번호" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>
-                                        <PasswordBox Grid.Row="3" Style="{DynamicResource ReadOnlyPasswordBoxStyle}" local:PasswordHelper.Attach="True" local:PasswordHelper.Password="{Binding UserPw}" Visibility="{Binding IsPwPasswordBoxVisibility}" IsEnabled="False" PasswordChar="*" Width="95" Margin="25,5,0,0"/>
+                                        <PasswordBox Grid.Row="3" Style="{DynamicResource ReadOnlyPasswordBoxStyle}" local:PasswordHelper.Attach="True" local:PasswordHelper.Password="{Binding UserPw}" Visibility="{Binding IsPwPasswordBoxVisibility}" IsEnabled="False" FontSize="8" Width="95" Margin="25,0,0,0"/>
                                         <TextBox Grid.Row="3" Style="{DynamicResource ReadOnlyTextBoxStyle}" Text="{Binding UserPw}" IsReadOnly="{Binding IsReadOnly}" Visibility="{Binding IsPwTextBoxVisibility}" Width="95" Margin="25,0,0,0"/>
 
                                         <Label Grid.Row="4" Content="소속" VerticalContentAlignment="Center" Foreground="{StaticResource ListBoxItemForegroundBrush}" FontFamily="/Fonts/#KoPubDotum Medium" FontSize="12"/>

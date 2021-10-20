@@ -45,9 +45,9 @@
     <SolidColorBrush x:Key="LabelForegroundBrush2" Color="{StaticResource Color_002}"/>
     
     <!-- TextBox Brush -->
-    <SolidColorBrush x:Key="LogTextBoxBackgroundBrush" Color="{StaticResource Color_001}"/>
-    <SolidColorBrush x:Key="LogTextBoxBorderBrush" Color="{StaticResource Color_001}"/>
-    <SolidColorBrush x:Key="LogTextBoxForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="TextBoxForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="{StaticResource Color_003}"/>
+    <SolidColorBrush x:Key="TextBoxSelectionBrush" Color="{StaticResource Color_012}"/>
 
     <!-- TabItem Brush -->
     <SolidColorBrush x:Key="TabItemInnerBackgroundBrush" Color="{StaticResource Color_001}"/>
@@ -90,4 +90,11 @@
     <SolidColorBrush x:Key="ComboBoxItemHoverBackgroundBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="ComboBoxItemSelectBackgroundBrush" Color="{StaticResource Color_003}"/>
     <SolidColorBrush x:Key="ComboBoxToggleButtonBackgroundBrush" Color="{StaticResource Color_003}"/>
+
+    <!-- DataGrid Brush -->
+    <SolidColorBrush x:Key="DataGridBackgroundBrush" Color="{StaticResource Color_008}"/>
+    <SolidColorBrush x:Key="DataGridBorderBrush" Color="{StaticResource Color_009}"/>
+    <SolidColorBrush x:Key="DataGridForegroundBrush" Color="{StaticResource Color_002}"/>
+    <SolidColorBrush x:Key="DataGridSelectBrush" Color="{StaticResource Color_012}"/>
+
 </ResourceDictionary>

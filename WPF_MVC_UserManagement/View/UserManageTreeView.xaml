@@ -17,7 +17,7 @@
             <Label Content="User List" VerticalAlignment="Bottom" FontSize="18" FontFamily="/Fonts/#Roboto Bold" Margin="15,0,0,0">
                 <Label.ContextMenu>
                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                        <MenuItem Header="루트 추가" Click="RootAddClick"/>
+                        <MenuItem Header="그룹 추가" Click="RootAddClick"/>
                     </ContextMenu>
                 </Label.ContextMenu>
                 <Label.Style>
@@ -56,7 +56,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBox x:Name="treeviewTextBox" Text="{Binding InputHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Background="{x:Null}" CaretBrush="{StaticResource TreeViewCaretBrush}" Foreground="{StaticResource TreeViewForegroundBrush}" FontSize="14" Margin="0,0,0,6" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}"
+                            <TextBox x:Name="treeviewTextBox" Style="{DynamicResource TreeItemTextBoxStyle}" Text="{Binding InputHeader, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" local:FocusExtension.IsFocused="{Binding IsEditFocus}" Visibility="{Binding IsEdit}" Margin="0,0,0,6"
                                      KeyDown="TreeEditKeyDown" LostFocus="TreeEditLostFocus">
                                 <TextBox.ContextMenu>
                                     <ContextMenu Visibility="Collapsed"/>

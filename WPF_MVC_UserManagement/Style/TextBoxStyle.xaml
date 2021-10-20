@@ -6,7 +6,8 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource ListBoxItemTextBoxBorderBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource ListBoxItemForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBoxForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource TextBoxSelectionBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="MaxLength" Value="20"/>
         <Setter Property="CaretBrush" Value="White"/>
@@ -44,34 +45,13 @@
         </Setter>
     </Style>
 
-    <!-- LogTextBoxStyle -->
-    <Style x:Key="LogTextBoxStyle" TargetType="{x:Type TextBox}">
-        <Setter Property="BorderBrush" Value="{StaticResource LogTextBoxBackgroundBrush}"/>
-        <Setter Property="Background" Value="{StaticResource LogTextBoxBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource LogTextBoxForegroundBrush}"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
-        <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TextBox}">
-                    <Grid>
-                        <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" Template="{DynamicResource ScrollViewerControlTemplate}"/>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <!-- ReadOnlyPasswordBoxStyle -->
     <Style x:Key="ReadOnlyPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource ListBoxItemTextBoxBorderBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{StaticResource ListBoxItemForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBoxForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource TextBoxSelectionBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="MaxLength" Value="20"/>
         <Setter Property="FontSize" Value="12"/>
@@ -82,6 +62,35 @@
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
                     <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsReadOnly}" Value="false">
+                            <Setter Property="BorderThickness" TargetName="border" Value="0,0,0,1"/>
+                            <Setter Property="Margin" TargetName="border" Value="0,0,0,-1"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- TextBoxStyle -->
+    <Style x:Key="TreeItemTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ContextMenu" Value="{x:Null}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBoxForegroundBrush}"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextBoxForegroundBrush}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource TextBoxSelectionBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="/Fonts/#Roboto Light"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" Template="{DynamicResource ScrollViewerControlTemplate}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
